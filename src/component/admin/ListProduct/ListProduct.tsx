@@ -4,8 +4,7 @@ import type { ColumnsType } from 'antd/es/table';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct } from '../../../actions/product';
 import './loadingfetch.css'
-import { fetchCat, getOneCat } from '../../../actions/category';
-
+import { getOneCat } from '../../../actions/category';
 interface DataType {
     key: string;
     name: string;
@@ -56,7 +55,6 @@ const ListProduct: React.FC = () => {
             </div>
         </div>
     }
-
     const columns: ColumnsType<DataType> = [
         {
             title: 'Name',
@@ -126,11 +124,9 @@ const ListProduct: React.FC = () => {
             }
         },
     ]
-
     return <>
 
         <Table columns={columns} dataSource={products} />
     </>
 }
-
 export default ListProduct;

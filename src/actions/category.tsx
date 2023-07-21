@@ -1,7 +1,6 @@
 import { instance } from "../api/instance"
 import { pause } from "../utils/pause"
 
-
 export const fetchCat = () => async (dispatch: any) => {
     dispatch({ type: "cat/fetching" })
     try {
