@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Table, Button } from 'antd';
+import { Table, Button, Pagination } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProduct } from '../../../actions/product';
+import { GetAllPro, fetchProduct } from '../../../actions/product';
 import './loadingfetch.css'
 import { getOneCat } from '../../../actions/category';
 interface DataType {
@@ -12,17 +12,20 @@ interface DataType {
     address: string;
     tags: string[];
 }
+let dispatched = false;
 
 
 const ListProduct: React.FC = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<any>()
     const { products, isloading, error } = useSelector((state: any) => state.products)
     const { categories } = useSelector((state: any) => state.category)
+   
     useEffect(() => {
         dispatch(fetchProduct())
     }, [])
     const handeleCat = (id: any) => {
         dispatch(getOneCat(id))
+        return
     }
     if (isloading) {
         return <div className="loader">
@@ -55,6 +58,12 @@ const ListProduct: React.FC = () => {
             </div>
         </div>
     }
+    
+    const onTotal = (total: any) => {
+        console.log(total);
+        dispatch(GetAllPro(total));
+    }
+
     const columns: ColumnsType<DataType> = [
         {
             title: 'Name',
@@ -106,8 +115,12 @@ const ListProduct: React.FC = () => {
         {
             title: 'Categories',
             key: 'cat_id',
-            render(e: any) {
-                handeleCat(e.cat_id)
+            render: (e: any) => {
+                if (!dispatched) {
+                    dispatch(getOneCat(e.cat_id))
+                    dispatched = true;
+                }
+
                 return (
                     categories?.name
                 );
@@ -126,7 +139,13 @@ const ListProduct: React.FC = () => {
     ]
     return <>
 
-        <Table columns={columns} dataSource={products} />
+        <Table columns={columns} dataSource={products.data} pagination={false} rowKey="_id" />
+        <Pagination
+
+            pageSize={1}
+            total={products.totalPages}
+            onChange={(page) => onTotal(page)}
+        />
     </>
 }
 export default ListProduct;

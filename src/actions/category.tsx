@@ -19,6 +19,7 @@ export const getOneCat = (id: any) => async (dispatch: any) => {
         await pause(2000)
         const { data } = await instance.get(`categories/${id}`)
         dispatch({ type: "cat/getone", payload: data.data })
+        return
     } catch (err: any) {
         dispatch({ type: "cat/getoneerror", payload: err.message })
     } finally {
