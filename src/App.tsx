@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import ListProduct from './component/admin/ListProduct/ListProduct'
 
-import Dashbord from './component/admin/Dashbord'
+import Dashbord from './component/admin/Dashbord/Dashbord'
 import AdminLayout from './layout/admin'
 
 function App() {
