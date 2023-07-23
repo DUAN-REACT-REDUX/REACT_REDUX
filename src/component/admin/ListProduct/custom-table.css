@@ -1,0 +1,10 @@
+.custom-table .ant-table-cell {
+    display: flex;
+    align-items: center;
+}
+
+.custom-table image {
+    width: 10%;
+    margin-right: 10px;
+    /* Khoảng cách 10px giữa ảnh và nội dung */
+}

@@ -4,6 +4,7 @@ import type { ColumnsType } from 'antd/es/table';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetAllPro, fetchProduct } from '../../../actions/product';
 import './loadingfetch.css'
+import './custom-table.css'
 import { getOneCat } from '../../../actions/category';
 interface DataType {
     key: string;
@@ -19,16 +20,12 @@ const ListProduct: React.FC = () => {
     const dispatch = useDispatch<any>()
     const { products, isloading, error } = useSelector((state: any) => state.products)
     const { categories } = useSelector((state: any) => state.category)
-   
+
     useEffect(() => {
         dispatch(fetchProduct())
     }, [])
-    const handeleCat = (id: any) => {
-        dispatch(getOneCat(id))
-        return
-    }
     if (isloading) {
-        return <div className="loader">
+        return <div className="loader" style={{ marginTop: "150px" }}>
             <div className="box box0">
                 <div></div>
             </div>
@@ -58,7 +55,11 @@ const ListProduct: React.FC = () => {
             </div>
         </div>
     }
-    
+    if (error) {
+        return <h2>
+            {error}
+        </h2>
+    }
     const onTotal = (total: any) => {
         console.log(total);
         dispatch(GetAllPro(total));
@@ -88,7 +89,7 @@ const ListProduct: React.FC = () => {
             key: 'image',
             render(e: any) {
                 return (
-                    <img src={e.image} alt="" />
+                    <img src={e.image} alt="" style={{ width: "10%" }} />
                 );
             }
         },
@@ -131,15 +132,18 @@ const ListProduct: React.FC = () => {
             key: 'action',
             render: () => {
                 return <>
-                    <Button type="primary">DELETE</Button>
-                    <Button type="primary">UPDATE</Button>
+                    <Button danger>DELETE</Button>
+                    <span>      </span>
+                    <Button >UPDATE</Button>
                 </>
             }
         },
     ]
     return <>
-
-        <Table columns={columns} dataSource={products.data} pagination={false} rowKey="_id" />
+        <h1>List Product</h1>
+        <div style={{ padding: '16px' }}>
+            <Table columns={columns} dataSource={products.data} pagination={false} rowKey="_id" />
+        </div>
         <Pagination
 
             pageSize={1}
