@@ -1,21 +1,22 @@
-import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import ProductReducer from '../reducer/product'
-import thunk from 'redux-thunk';
-import CategoryReducer from '../reducer/category';
 
-const composeEnhancers =
-    typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-        ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-            // Specify extension’s options like name, actionsDenylist, actionsCreators, serialize...
-        })
-        : compose;
-const enhancer = composeEnhancers(
-    applyMiddleware(thunk),
-    // other store enhancers if any
-);
-const rootReducer = combineReducers({
-    products: ProductReducer,
-    category: CategoryReducer
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import ProductReducer from "../slice/product";
+import CategoryReducer from "../slice/category";
+
+const store = configureStore({
+    reducer: {
+        products: ProductReducer,
+        category: CategoryReducer,
+        // cart: cartReducer
+    }
 })
-const store = createStore(rootReducer, enhancer)
-export default store
+
+export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>
+export type AppThunk<ReturnType = void> = ThunkAction<
+    ReturnType,
+    RootState,
+    unknown,
+    Action<string>
+>
+export default store;

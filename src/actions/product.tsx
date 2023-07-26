@@ -1,23 +1,18 @@
 import { instance } from "../api/instance"
 import { pause } from "../utils/pause"
+import { createAsyncThunk } from '@reduxjs/toolkit'
 
 
-export const fetchProduct = () => async (dispatch: any) => {
-    dispatch({ type: "product/fetching" })
-    try {
-        await pause(3000)
-        const { data } = await instance.get('products?_sort=price&_page=1&_order=desc&_limit=5')
-        console.log(data);
-        dispatch({ type: "product/fetch", payload: data })
-    } catch (err: any) {
-        dispatch({ type: "product/fetcherror", payload: err.message })
-    } finally {
-        dispatch({ type: "product/fetchsuccess" })
-    }
-}
-export const GetAllPro = (total:any) => async (dispatch: any) => {
-  
-        const { data } = await instance.get(`products?_sort=price&_page=${total}&_order=desc&_limit=5`)
-        dispatch({ type: "product/fetch", payload: data })
- 
-}
+export const fetchProduct = createAsyncThunk('products/fetch', async () => {
+    await pause(2000)
+    const { data } = await instance.get('products?_sort=price&_page=1&_order=desc&_limit=5')
+    return data
+})
+
+
+export const GetAllPro = createAsyncThunk('products/get', async (total: any) => {
+    // await pause(500)
+    const { data } = await instance.get(`products?_sort=price&_page=${total}&_order=desc&_limit=5`)
+    return { total, data }
+
+})
