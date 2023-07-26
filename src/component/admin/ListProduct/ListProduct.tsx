@@ -18,7 +18,7 @@ let dispatched = false;
 
 const ListProduct: React.FC = () => {
     const dispatch = useDispatch<any>()
-    const { products, isloading, error } = useSelector((state: any) => state.products)
+    const { products, isloading, error, currentPage } = useSelector((state: any) => state.products)
     const { categories } = useSelector((state: any) => state.category)
 
     useEffect(() => {
@@ -60,8 +60,9 @@ const ListProduct: React.FC = () => {
             {error}
         </h2>
     }
-    const onTotal = (total: any) => {
+    const onTotal = (total:any) => {
         console.log(total);
+        // dispatch(GetAllPro(total));
         dispatch(GetAllPro(total));
     }
 
@@ -148,6 +149,7 @@ const ListProduct: React.FC = () => {
 
             pageSize={1}
             total={products.totalPages}
+            current={currentPage}
             onChange={(page) => onTotal(page)}
         />
     </>

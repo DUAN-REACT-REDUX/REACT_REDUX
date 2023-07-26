@@ -155,7 +155,7 @@ const AdminLayout: React.FC = () => {
                                                     <a href="#" className="connection-item"><img src="assets/images/mail_chimp.png" alt="" /><span>Mail chimp</span></a>
                                                 </div>
                                                 <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                                    <a href="#" className="connection-item"><img src="assets/images/slack.png" alt="" /> <span>Slack</span></a>
+                                                    <a href="#" className="connection-item"><img src="./assets/images/slack.png" alt="" /> <span>Slack</span></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -165,7 +165,7 @@ const AdminLayout: React.FC = () => {
                                     </ul>
                                 </li>
                                 <li className="nav-item dropdown nav-user">
-                                    <a className="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" className="user-avatar-md rounded-circle" /></a>
+                                    <a className="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://res.cloudinary.com/dw6wgytc3/image/upload/v1686201786/NODEJS/ik3ugtnpledaah3vgtfk.jpg" alt="" className="user-avatar-md rounded-circle" /></a>
                                     <div className="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                         <div className="nav-user-info">
                                             <h5 className="mb-0 text-white nav-user-name">John Abraham </h5>
