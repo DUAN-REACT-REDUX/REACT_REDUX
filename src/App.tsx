@@ -1,31 +1,29 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import ListProduct from './component/admin/ListProduct/ListProduct'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ListProduct from "./component/admin/ListProduct/ListProduct";
 
-import Dashbord from './component/admin/Dashbord/Dashbord'
-import AdminLayout from './layout/admin'
-import ListUser from './component/admin/ListUser/ListUser'
-
+import Dashbord from "./component/admin/Dashbord/Dashbord";
+import AdminLayout from "./layout/admin";
+import ListUser from "./component/admin/ListUser/ListUser";
+import AddProduct from "./component/admin/AddProduct/addProduct";
 function App() {
   return (
     <div>
       <Router>
         <Routes>
-          <Route path="/admin" element={<AdminLayout />} >
+          <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashbord />} />
-            <Route path='product' >
+            <Route path="product">
               <Route index element={<ListProduct />} />
-
+              <Route path="add" element={<AddProduct />} />
             </Route>
-            <Route path='user' >
+            <Route path="user">
               <Route index element={<ListUser />} />
-
             </Route>
           </Route>
-
         </Routes>
       </Router>
-    </div >
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
