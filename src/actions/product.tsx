@@ -15,4 +15,4 @@ export const GetAllPro = createAsyncThunk('products/get', async (total: any) => 
     const { data } = await instance.get(`products?_sort=price&_page=${total}&_order=desc&_limit=5`)
     return { total, data }
 
-})
+})                                                      

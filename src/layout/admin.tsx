@@ -248,6 +248,8 @@ const AdminLayout: React.FC = () => {
                                                 <li className="nav-item">
                                                     <a className="nav-link" href="admin/product">List Products <span className="badge badge-secondary">New</span></a>
                                                 </li>
+
+
                                                 <li className="nav-item">
                                                     <a className="nav-link" href="pages/general.html">Add Product</a>
                                                 </li>
@@ -269,12 +271,15 @@ const AdminLayout: React.FC = () => {
                                             </ul>
                                         </div>
                                     </li>
+
+
+
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i className="fas fa-fw fa-chart-pie"></i>Chart</a>
+                                        <a className="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i className="fas fa-fw fa-chart-pie"></i>User</a>
                                         <div id="submenu-3" className="collapse submenu" >
                                             <ul className="nav flex-column">
                                                 <li className="nav-item">
-                                                    <a className="nav-link" href="pages/chart-c3.html">C3 Charts</a>
+                                                    <a className="nav-link" href="user">List User <span className="badge badge-secondary">New</span></a>
                                                 </li>
                                                 <li className="nav-item">
                                                     <a className="nav-link" href="pages/chart-chartist.html">Chartist Charts</a>
