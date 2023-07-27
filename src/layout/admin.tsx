@@ -8,68 +8,10 @@ import "./assets/vendor/charts/c3charts/c3.css";
 import "./assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css";
 import "./assets/vendor/charts/morris-bundle/morris.css";
 import "./assets/vendor/charts/chartist-bundle/chartist.css";
-// import 'https://cdnjs.cloudflare.com/ajax/libs/foneaquesome/VERSION/foneaquesome.min.css'
 import { Link, Outlet } from "react-router-dom";
-// import {
-//     MenuFoldOutlined,
-//     MenuUnfoldOutlined,
-// } from '@ant-design/icons';
-// import { Layout, Menu, Button, theme } from 'antd';
-// import { Link, Outlet } from 'react-router-dom';
-
-// const { Header, Sider, Content } = Layout;
 
 const AdminLayout: React.FC = () => {
-  // const [collapsed, setCollapsed] = useState(false);
-  // const {
-  //     token: { colorBgContainer },
-  // } = theme.useToken();
-
   return (
-    // <Layout>
-    //     <Sider trigger={null} collapsible collapsed={collapsed}>
-    //         <div className="demo-logo-vertical" />
-    //         <Menu theme="dark" mode="inline">
-    //             <Menu.Item key={"1"}>
-    //                 <Link to={'/admin'}>Dashbord</Link>
-    //             </Menu.Item>
-    //             <Menu.Item key={"2"}>
-    //                 <Link to={'/admin/product'}>List Product</Link>
-    //             </Menu.Item>
-    //             <Menu.Item key={"3"}>
-    //                 <Link to={'/admin/category'}>List Category</Link>
-    //             </Menu.Item>
-    //             <Menu.Item key={"4"}>
-    //                 <Link to={'/admin/user'}>List User</Link>
-    //             </Menu.Item>
-    //         </Menu>
-    //     </Sider>
-    //     <Layout>
-    //         <Header style={{ padding: 0, background: colorBgContainer }}>
-    //             <Button
-    //                 type="text"
-    //                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-    //                 onClick={() => setCollapsed(!collapsed)}
-    //                 style={{
-    //                     fontSize: '16px',
-    //                     width: 64,
-    //                     height: 64,
-    //                 }}
-    //             />
-    //         </Header>
-    //         <Content
-    //             style={{
-    //                 margin: '24px 16px',
-    //                 padding: 24,
-    //                 minHeight: 280,
-    //                 background: colorBgContainer,
-    //             }}
-    //         >
-    //             <Outlet />
-    //         </Content>
-    //     </Layout>
-    // </Layout>
-
     <>
       <div className="dashboard-main-wrapper">
         <div className="dashboard-header">
@@ -484,8 +426,14 @@ const AdminLayout: React.FC = () => {
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a className="nav-link" href="admin/product/add">
-                            Add Product
+                          <a className="nav-link">
+                            <Link
+                              to="product/add"
+                              style={{ textDecoration: "none", color: "white" }}
+                            >
+                              Add Products{" "}
+                            </Link>
+                            <span className="badge badge-secondary">New</span>
                           </a>
                         </li>
                         <li className="nav-item">
@@ -531,8 +479,13 @@ const AdminLayout: React.FC = () => {
                     <div id="submenu-3" className="collapse submenu">
                       <ul className="nav flex-column">
                         <li className="nav-item">
-                          <a className="nav-link" href="user">
-                            List User{" "}
+                          <a className="nav-link">
+                            <Link
+                              to="users"
+                              style={{ textDecoration: "none", color: "white" }}
+                            >
+                              List Users{" "}
+                            </Link>
                             <span className="badge badge-secondary">New</span>
                           </a>
                         </li>

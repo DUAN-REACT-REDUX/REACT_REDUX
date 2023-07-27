@@ -5,6 +5,7 @@ import Dashbord from "./component/admin/Dashbord/Dashbord";
 import AdminLayout from "./layout/admin";
 import ListUser from "./component/admin/ListUser/ListUser";
 import AddProduct from "./component/admin/AddProduct/addProduct";
+import Client from "./layout/client/Client";
 function App() {
   return (
     <div>
@@ -16,9 +17,19 @@ function App() {
               <Route index element={<ListProduct />} />
               <Route path="add" element={<AddProduct />} />
             </Route>
-            <Route path="user">
+            <Route path="users">
               <Route index element={<ListUser />} />
             </Route>
+          </Route>
+          <Route path="/" element={<Client />}>
+            {/* <Route index element={<Dashbord />} />
+            <Route path="product">
+              <Route index element={<ListProduct />} />
+              <Route path="add" element={<AddProduct />} />
+            </Route>
+            <Route path="users">
+              <Route index element={<ListUser />} />
+            </Route> */}
           </Route>
         </Routes>
       </Router>
