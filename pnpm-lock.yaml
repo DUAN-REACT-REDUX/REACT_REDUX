@@ -20,6 +20,9 @@ dependencies:
   bootstrap:
     specifier: ^5.3.0
     version: 5.3.0(@popperjs/core@2.11.8)
+  font-awesome:
+    specifier: ^4.7.0
+    version: 4.7.0
   fontawesome:
     specifier: ^5.6.3
     version: 5.6.3
@@ -1555,6 +1558,11 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
+    dev: false
+
+  /font-awesome@4.7.0:
+    resolution: {integrity: sha512-U6kGnykA/6bFmg1M/oT9EkFeIYv7JlX3bozwQJWiiLz6L0w3F5vBVPxHlwyX/vtNq1ckcpRKOB9f2Qal/VtFpg==}
+    engines: {node: '>=0.10.3'}
     dev: false
 
   /fontawesome@5.6.3:
