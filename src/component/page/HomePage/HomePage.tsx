@@ -3,495 +3,454 @@
 const HomePage = () => {
     return (
         <>
-            <section className="hero">
-                <div className="hero__slider owl-carousel">
-                    <div className="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-xl-5 col-lg-7 col-md-8">
-                                    <div className="hero__text">
-                                        <h6>Summer Collection</h6>
-                                        <h2>Fall - Winter Collections 2030</h2>
-                                        <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                            commitment to exceptional quality.</p>
-                                        <a href="#" className="primary-btn">Shop now <span className="arrow_right"></span></a>
-                                        <div className="hero__social">
-                                            <a href="#"><i className="fa fa-facebook"></i></a>
-                                            <a href="#"><i className="fa fa-twitter"></i></a>
-                                            <a href="#"><i className="fa fa-pinterest"></i></a>
-                                            <a href="#"><i className="fa fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+            <div id="header-carousel" className="carousel slide" data-ride="carousel">
+                <div className="carousel-inner">
+                    <div className="carousel-item active" style={{ height: "410px" }}>
+                        <img className="img-fluid" src="img/carousel-1.jpg" alt="Image" />
+                        <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div className="p-3" style={{ maxWidth: "700px" }}>
+                                <h4 className="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                                <h3 className="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
+                                <a href="" className="btn btn-light py-2 px-3">Shop Now</a>
                             </div>
                         </div>
                     </div>
-                    <div className="hero__items set-bg" data-setbg="img/hero/hero-2.jpg">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-xl-5 col-lg-7 col-md-8">
-                                    <div className="hero__text">
-                                        <h6>Summer Collection</h6>
-                                        <h2>Fall - Winter Collections 2030</h2>
-                                        <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                            commitment to exceptional quality.</p>
-                                        <a href="#" className="primary-btn">Shop now <span className="arrow_right"></span></a>
-                                        <div className="hero__social">
-                                            <a href="#"><i className="fa fa-facebook"></i></a>
-                                            <a href="#"><i className="fa fa-twitter"></i></a>
-                                            <a href="#"><i className="fa fa-pinterest"></i></a>
-                                            <a href="#"><i className="fa fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div className="carousel-item" style={{ height: "410px" }}>
+                        <img className="img-fluid" src="img/carousel-2.jpg" alt="Image" />
+                        <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div className="p-3" style={{ maxWidth: "700px" }}>
+                                <h4 className="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                                <h3 className="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
+                                <a href="" className="btn btn-light py-2 px-3">Shop Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className="banner spad">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-7 offset-lg-4">
-                            <div className="banner__item">
-                                <div className="banner__item__pic">
-                                    <img src="http://127.0.0.1:5500/img/product/product-5.jpg" alt="" />
-                                </div>
-                                <div className="banner__item__text">
-                                    <h2>Clothing Collections 2030</h2>
-                                    <a href="#">Shop now</a>
-                                </div>
+                <a className="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                    <div className="btn btn-dark" style={{ width: "45px", height: "45px" }}>
+                        <span className="carousel-control-prev-icon mb-n2"></span>
+                    </div>
+                </a>
+                <a className="carousel-control-next" href="#header-carousel" data-slide="next">
+                    <div className="btn btn-dark" style={{ width: "45px", height: "45px" }}>
+                        <span className="carousel-control-next-icon mb-n2"></span>
+                    </div>
+                </a>
+            </div>
+            <div className="container-fluid pt-5">
+                <div className="row px-xl-5 pb-3">
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="d-flex align-items-center border mb-4" style={{ padding: "30px" }}>
+                            <h1 className="fa fa-check text-primary m-0 mr-3"></h1>
+                            <h5 className="font-weight-semi-bold m-0">Quality Product</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="d-flex align-items-center border mb-4" style={{ padding: "30px" }}>
+                            <h1 className="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                            <h5 className="font-weight-semi-bold m-0">Free Shipping</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="d-flex align-items-center border mb-4" style={{ padding: "30px" }}>
+                            <h1 className="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                            <h5 className="font-weight-semi-bold m-0">14-Day Return</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="d-flex align-items-center border mb-4" style={{ padding: "30px" }}>
+                            <h1 className="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                            <h5 className="font-weight-semi-bold m-0">24/7 Support</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="container-fluid pt-5">
+                <div className="row px-xl-5 pb-3">
+                    <div className="col-lg-4 col-md-6 pb-1">
+                        <div className="cat-item d-flex flex-column border mb-4" style={{ padding: "30px" }}>
+                            <p className="text-right">15 Products</p>
+                            <a href="" className="cat-img position-relative overflow-hidden mb-3">
+                                <img className="img-fluid" src="img/cat-1.jpg" alt="" />
+                            </a>
+                            <h5 className="font-weight-semi-bold m-0">Men's dresses</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6 pb-1">
+                        <div className="cat-item d-flex flex-column border mb-4" style={{ padding: "30px" }}>
+                            <p className="text-right">15 Products</p>
+                            <a href="" className="cat-img position-relative overflow-hidden mb-3">
+                                <img className="img-fluid" src="img/cat-2.jpg" alt="" />
+                            </a>
+                            <h5 className="font-weight-semi-bold m-0">Women's dresses</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6 pb-1">
+                        <div className="cat-item d-flex flex-column border mb-4" style={{ padding: "30px" }}>
+                            <p className="text-right">15 Products</p>
+                            <a href="" className="cat-img position-relative overflow-hidden mb-3">
+                                <img className="img-fluid" src="img/cat-3.jpg" alt="" />
+                            </a>
+                            <h5 className="font-weight-semi-bold m-0">Baby's dresses</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6 pb-1">
+                        <div className="cat-item d-flex flex-column border mb-4" style={{ padding: "30px" }}>
+                            <p className="text-right">15 Products</p>
+                            <a href="" className="cat-img position-relative overflow-hidden mb-3">
+                                <img className="img-fluid" src="img/cat-4.jpg" alt="" />
+                            </a>
+                            <h5 className="font-weight-semi-bold m-0">Accerssories</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6 pb-1">
+                        <div className="cat-item d-flex flex-column border mb-4" style={{ padding: "30px" }}>
+                            <p className="text-right">15 Products</p>
+                            <a href="" className="cat-img position-relative overflow-hidden mb-3">
+                                <img className="img-fluid" src="img/cat-5.jpg" alt="" />
+                            </a>
+                            <h5 className="font-weight-semi-bold m-0">Bags</h5>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-md-6 pb-1">
+                        <div className="cat-item d-flex flex-column border mb-4" style={{ padding: "30px" }}>
+                            <p className="text-right">15 Products</p>
+                            <a href="" className="cat-img position-relative overflow-hidden mb-3">
+                                <img className="img-fluid" src="img/cat-6.jpg" alt="" />
+                            </a>
+                            <h5 className="font-weight-semi-bold m-0">Shoes</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="container-fluid offer pt-5">
+                <div className="row px-xl-5">
+                    <div className="col-md-6 pb-4">
+                        <div className="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
+                            <img src="img/offer-1.png" alt="" />
+                            <div className="position-relative" style={{ zIndex: "1" }}>
+                                <h5 className="text-uppercase text-primary mb-3">20% off the all order</h5>
+                                <h1 className="mb-4 font-weight-semi-bold">Spring Collection</h1>
+                                <a href="" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                             </div>
                         </div>
-                        <div className="col-lg-5">
-                            <div className="banner__item banner__item--middle">
-                                <div className="banner__item__pic">
-                                    <img src="http://127.0.0.1:5500/img/product/product-5.jpg" alt="" />
-                                </div>
-                                <div className="banner__item__text">
-                                    <h2>Accessories</h2>
-                                    <a href="#">Shop now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-7">
-                            <div className="banner__item banner__item--last">
-                                <div className="banner__item__pic">
-                                    <img src="http://127.0.0.1:5500/img/product/product-5.jpg" alt="" />
-                                </div>
-                                <div className="banner__item__text">
-                                    <h2>Shoes Spring 2030</h2>
-                                    <a href="#">Shop now</a>
-                                </div>
+                    </div>
+                    <div className="col-md-6 pb-4">
+                        <div className="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
+                            <img src="img/offer-2.png" alt="" />
+                            <div className="position-relative" style={{ zIndex: "1" }}>
+                                <h5 className="text-uppercase text-primary mb-3">20% off the all order</h5>
+                                <h1 className="mb-4 font-weight-semi-bold">Winter Collection</h1>
+                                <a href="" className="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className="product spad">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <ul className="filter__controls">
-                                <li className="active" data-filter="*">Best Sellers</li>
-                                <li data-filter=".new-arrivals">New Arrivals</li>
-                                <li data-filter=".hot-sales">Hot Sales</li>
-                            </ul>
+            </div>
+            <div className="container-fluid pt-5">
+                <div className="text-center mb-4">
+                    <h2 className="section-title px-5"><span className="px-2">Trandy Products</span></h2>
+                </div>
+                <div className="row px-xl-5 pb-3">
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="img/product-1.jpg" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
                         </div>
                     </div>
-                    <div className="row product__filter">
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                            <div className="product__item">
-                                <div className="product__item__pic set-bg" style={{ backgroundImage: "https://res.cloudinary.com/due9gb9nq/image/upload/v1681282261/WE17301/tbc3eh0thmwpcq5id7j9.jpg" }}>
-                                    <span className="label">New</span>
-                                    <ul className="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt="" /></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="" /> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt="" /></a></li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>Piqué Biker Jacket</h6>
-                                    <a href="#" className="add-cart">+ Add To Cart</a>
-                                    <div className="rating">
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$67.24</h5>
-                                    <div className="product__color__select">
-                                        <label htmlFor="pc-1">
-                                            <input type="radio" id="pc-1" />
-                                        </label>
-                                        <label className="active black" htmlFor="pc-2">
-                                            <input type="radio" id="pc-2" />
-                                        </label>
-                                        <label className="grey" htmlFor="pc-3">
-                                            <input type="radio" id="pc-3" />
-                                        </label>
-                                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="img/product-2.jpg" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                            <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                                    <ul className="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt="" /></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="" /> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt="" /></a></li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>Piqué Biker Jacket</h6>
-                                    <a href="#" className="add-cart">+ Add To Cart</a>
-                                    <div className="rating">
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$67.24</h5>
-                                    <div className="product__color__select">
-                                        <label htmlFor="pc-4">
-                                            <input type="radio" id="pc-4" />
-                                        </label>
-                                        <label className="active black" htmlFor="pc-5">
-                                            <input type="radio" id="pc-5" />
-                                        </label>
-                                        <label className="grey" htmlFor="pc-6">
-                                            <input type="radio" id="pc-6" />
-                                        </label>
-                                    </div>
-                                </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                            <div className="product__item sale">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                                    <span className="label">Sale</span>
-                                    <ul className="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt="" /></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="" /> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt="" /></a></li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>Multi-pocket Chest Bag</h6>
-                                    <a href="#" className="add-cart">+ Add To Cart</a>
-                                    <div className="rating">
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$43.48</h5>
-                                    <div className="product__color__select">
-                                        <label htmlFor="pc-7">
-                                            <input type="radio" id="pc-7" />
-                                        </label>
-                                        <label className="active black" htmlFor="pc-8">
-                                            <input type="radio" id="pc-8" />
-                                        </label>
-                                        <label className="grey" htmlFor="pc-9">
-                                            <input type="radio" id="pc-9" />
-                                        </label>
-                                    </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="img/product-3.jpg" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                            <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-                                    <ul className="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt="" /></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="" /> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt="" /></a></li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>Diagonal Textured Cap</h6>
-                                    <a href="#" className="add-cart">+ Add To Cart</a>
-                                    <div className="rating">
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$60.9</h5>
-                                    <div className="product__color__select">
-                                        <label htmlFor="pc-10">
-                                            <input type="radio" id="pc-10" />
-                                        </label>
-                                        <label className="active black" htmlFor="pc-11">
-                                            <input type="radio" id="pc-11" />
-                                        </label>
-                                        <label className="grey" htmlFor="pc-12">
-                                            <input type="radio" id="pc-12" />
-                                        </label>
-                                    </div>
-                                </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                            <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
-                                    <ul className="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt="" /></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="" /> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt="" /></a></li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>Lether Backpack</h6>
-                                    <a href="#" className="add-cart">+ Add To Cart</a>
-                                    <div className="rating">
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$31.37</h5>
-                                    <div className="product__color__select">
-                                        <label htmlFor="pc-13">
-                                            <input type="radio" id="pc-13" />
-                                        </label>
-                                        <label className="active black" htmlFor="pc-14">
-                                            <input type="radio" id="pc-14" />
-                                        </label>
-                                        <label className="grey" htmlFor="pc-15">
-                                            <input type="radio" id="pc-15" />
-                                        </label>
-                                    </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="img/product-4.jpg" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                            <div className="product__item sale">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
-                                    <span className="label">Sale</span>
-                                    <ul className="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt="" /></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="" /> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt="" /></a></li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>Ankle Boots</h6>
-                                    <a href="#" className="add-cart">+ Add To Cart</a>
-                                    <div className="rating">
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star"></i>
-                                        <i className="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$98.49</h5>
-                                    <div className="product__color__select">
-                                        <label htmlFor="pc-16">
-                                            <input type="radio" id="pc-16" />
-                                        </label>
-                                        <label className="active black" htmlFor="pc-17">
-                                            <input type="radio" id="pc-17" />
-                                        </label>
-                                        <label className="grey" htmlFor="pc-18">
-                                            <input type="radio" id="pc-18" />
-                                        </label>
-                                    </div>
-                                </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                            <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                                    <ul className="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt="" /></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="" /> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt="" /></a></li>
-                                    </ul>
-                                </div>
-                                <div className="product__item__text">
-                                    <h6>T-shirt Contrast Pocket</h6>
-                                    <a href="#" className="add-cart">+ Add To Cart</a>
-                                    <div className="rating">
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$49.66</h5>
-                                    <div className="product__color__select">
-                                        <label htmlFor="pc-19">
-                                            <input type="radio" id="pc-19" />
-                                        </label>
-                                        <label className="active black" htmlFor="pc-20">
-                                            <input type="radio" id="pc-20" />
-                                        </label>
-                                        <label className="grey" htmlFor="pc-21">
-                                            <input type="radio" id="pc-21" />
-                                        </label>
-                                    </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="img/product-5.jpg" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
                             </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
-                            <div className="product__item">
-                                <div className="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
-                                    <ul className="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt="" /></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="" /> <span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt="" /></a></li>
-                                    </ul>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="img/product-6.jpg" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
-                                <div className="product__item__text">
-                                    <h6>Basic Flowing Scarf</h6>
-                                    <a href="#" className="add-cart">+ Add To Cart</a>
-                                    <div className="rating">
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                        <i className="fa fa-star-o"></i>
-                                    </div>
-                                    <h5>$26.28</h5>
-                                    <div className="product__color__select">
-                                        <label htmlFor="pc-22">
-                                            <input type="radio" id="pc-22" />
-                                        </label>
-                                        <label className="active black" htmlFor="pc-23">
-                                            <input type="radio" id="pc-23" />
-                                        </label>
-                                        <label className="grey" htmlFor="pc-24">
-                                            <input type="radio" id="pc-24" />
-                                        </label>
-                                    </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="img/product-7.jpg" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="img/product-8.jpg" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className="categories spad">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-3">
-                            <div className="categories__text">
-                                <h2>Clothings Hot <br /> <span>Shoe Collection</span> <br /> Accessories</h2>
-                            </div>
+            </div>
+            <div className="container-fluid bg-secondary my-5">
+                <div className="row justify-content-md-center py-5 px-xl-5">
+                    <div className="col-md-6 col-12 py-5">
+                        <div className="text-center mb-2 pb-2">
+                            <h2 className="section-title px-5 mb-3"><span className="bg-secondary px-2">Stay Updated</span></h2>
+                            <p>Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam labore at justo ipsum eirmod duo labore labore.</p>
                         </div>
-                        <div className="col-lg-4">
-                            <div className="categories__hot__deal">
-                                <img src="img/product-sale.png" alt="" />
-                                <div className="hot__deal__sticker">
-                                    <span>Sale Of</span>
-                                    <h5>$29.99</h5>
+                        <form action="">
+                            <div className="input-group">
+                                <input type="text" className="form-control border-white p-4" placeholder="Email Goes Here" />
+                                <div className="input-group-append">
+                                    <button className="btn btn-primary px-4">Subscribe</button>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-lg-4 offset-lg-1">
-                            <div className="categories__deal__countdown">
-                                <span>Deal Of The Week</span>
-                                <h2>Multi-pocket Chest Bag Black</h2>
-                                <div className="categories__deal__countdown__timer" id="countdown">
-                                    <div className="cd-item">
-                                        <span>3</span>
-                                        <p>Days</p>
-                                    </div>
-                                    <div className="cd-item">
-                                        <span>1</span>
-                                        <p>Hours</p>
-                                    </div>
-                                    <div className="cd-item">
-                                        <span>50</span>
-                                        <p>Minutes</p>
-                                    </div>
-                                    <div className="cd-item">
-                                        <span>18</span>
-                                        <p>Seconds</p>
-                                    </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div className="container-fluid pt-5">
+                <div className="text-center mb-4">
+                    <h2 className="section-title px-5"><span className="px-2">Just Arrived</span></h2>
+                </div>
+                <div className="row px-xl-5 pb-3">
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="https://cdn1.vieclam24h.vn/upload/files_cua_nguoi_dung/logo/2016/12/06/1481008919_logoadam4-01.png" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
                                 </div>
-                                <a href="#" className="primary-btn">Shop now</a>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="https://cdn1.vieclam24h.vn/upload/files_cua_nguoi_dung/logo/2016/12/06/1481008919_logoadam4-01.png" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="https://cdn1.vieclam24h.vn/upload/files_cua_nguoi_dung/logo/2016/12/06/1481008919_logoadam4-01.png" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="https://cdn1.vieclam24h.vn/upload/files_cua_nguoi_dung/logo/2016/12/06/1481008919_logoadam4-01.png" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="https://cdn1.vieclam24h.vn/upload/files_cua_nguoi_dung/logo/2016/12/06/1481008919_logoadam4-01.png" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="https://cdn1.vieclam24h.vn/upload/files_cua_nguoi_dung/logo/2016/12/06/1481008919_logoadam4-01.png" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="https://cdn1.vieclam24h.vn/upload/files_cua_nguoi_dung/logo/2016/12/06/1481008919_logoadam4-01.png" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div className="card product-item border-0 mb-4">
+                            <div className="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img className="img-fluid w-100" src="https://cdn1.vieclam24h.vn/upload/files_cua_nguoi_dung/logo/2016/12/06/1481008919_logoadam4-01.png" alt="" />
+                            </div>
+                            <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 className="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div className="d-flex justify-content-center">
+                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div className="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className="instagram spad">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-8">
-                            <div className="instagram__pic">
-                                <div className="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-1.jpg"></div>
-                                <div className="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-2.jpg"></div>
-                                <div className="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-3.jpg"></div>
-                                <div className="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-4.jpg"></div>
-                                <div className="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-5.jpg"></div>
-                                <div className="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-6.jpg"></div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4">
-                            <div className="instagram__text">
-                                <h2>Instagram</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                    labore et dolore magna aliqua.</p>
-                                <h3>#Male_Fashion</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="latest spad">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="section-title">
-                                <span>Latest News</span>
-                                <h2>Fashion New Trends</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-4 col-md-6 col-sm-6">
-                            <div className="blog__item">
-                                <div className="blog__item__pic set-bg" data-setbg="img/blog/blog-1.jpg"></div>
-                                <div className="blog__item__text">
-                                    <span><img src="img/icon/calendar.png" alt="" /> 16 February 2020</span>
-                                    <h5>What Curling Irons Are The Best Ones</h5>
-                                    <a href="#">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6">
-                            <div className="blog__item">
-                                <div className="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
-                                <div className="blog__item__text">
-                                    <span><img src="img/icon/calendar.png" alt="" /> 21 February 2020</span>
-                                    <h5>Eternity Bands Do Last Forever</h5>
-                                    <a href="#">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6">
-                            <div className="blog__item">
-                                <div className="blog__item__pic set-bg" data-setbg="img/blog/blog-3.jpg"></div>
-                                <div className="blog__item__text">
-                                    <span><img src="img/icon/calendar.png" alt="" /> 28 February 2020</span>
-                                    <h5>The Health Benefits Of Sunglasses</h5>
-                                    <a href="#">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </div>
 
         </>
     )
