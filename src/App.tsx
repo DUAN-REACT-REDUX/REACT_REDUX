@@ -8,6 +8,7 @@ import AddProduct from "./component/admin/AddProduct/addProduct";
 import Client from "./layout/client/Client";
 import HomePage from "./component/page/HomePage/HomePage";
 import AddCat from "./component/admin/AddCat/AddCat";
+import ListCategories from "./component/admin/ListCategory/ListCategory";
 function App() {
   return (
     <div>
@@ -22,8 +23,8 @@ function App() {
             <Route path="users">
               <Route index element={<ListUser />} />
             </Route>
-            <Route path="category">
-              <Route index element={<ListUser />} />
+            <Route path="categories">
+              <Route index element={<ListCategories />} />
               <Route path="add" element={<AddCat />} />
             </Route>
           </Route>
