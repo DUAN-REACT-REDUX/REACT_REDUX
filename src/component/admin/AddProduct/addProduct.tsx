@@ -15,7 +15,7 @@ const AddProduct = () => {
     cat_id: 1,
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
