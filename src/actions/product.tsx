@@ -32,8 +32,21 @@ export const AddProductAction = createAsyncThunk(
 export const DeleteProduct = createAsyncThunk(
   "products/delete",
   async (productId: any) => {
+    const accesstoken = JSON.parse(localStorage.getItem("accesstoken")!);
+    console.log(accesstoken);
     console.log(productId);
-    await instance.delete(`/products/${productId}`);
-    return productId;
+
+    try {
+      await instance.delete(`/products/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${accesstoken}`,
+        },
+      });
+      return productId;
+    } catch (error) {
+      console.log(error);
+    }
+    // await instance.delete(`/products/${productId}`);
+    // return productId;
   }
 );
