@@ -7,6 +7,7 @@ import ListUser from "./component/admin/ListUser/ListUser";
 import AddProduct from "./component/admin/AddProduct/addProduct";
 import Client from "./layout/client/Client";
 import HomePage from "./component/page/HomePage/HomePage";
+import AddCat from "./component/admin/AddCat/AddCat";
 function App() {
   return (
     <div>
@@ -20,6 +21,10 @@ function App() {
             </Route>
             <Route path="users">
               <Route index element={<ListUser />} />
+            </Route>
+            <Route path="category">
+              <Route index element={<ListUser />} />
+              <Route path="add" element={<AddCat />} />
             </Route>
           </Route>
           <Route path="/" element={<Client />}>

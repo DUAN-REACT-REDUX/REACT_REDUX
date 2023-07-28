@@ -5,7 +5,7 @@ const initialState = {
     isloadingCat: false,
     errorCat: ""
 }
-const CategoryReducer = (state = initialState, action: any) => {
+const gf = (state = initialState, action: any) => {
     return produce(state, (drafState: any) => {
         switch (action.type) {
             //FETCH
@@ -26,7 +26,7 @@ const CategoryReducer = (state = initialState, action: any) => {
             case "cat/getone":
                 drafState.categories = action.payload
                 return
-
+           
 
 
             default:
@@ -36,4 +36,38 @@ const CategoryReducer = (state = initialState, action: any) => {
     })
 }
 
-export default CategoryReducer
+import { createSlice } from "@reduxjs/toolkit";
+import { AddProductAction, GetAllPro, fetchProduct } from "../actions/product";
+import { AddCat, AddCategory } from "../actions/category"
+
+const CategoryReducer = createSlice({
+    name: "categories",
+    initialState,
+    reducers: {},
+
+    extraReducers(builder) {
+        builder
+            .addCase(fetchProduct.pending, (state) => {
+                state.isloadingCat = true;
+            })
+            .addCase(fetchProduct.fulfilled, (state, action) => {
+                console.log(action);
+                state.isloadingCat = false;
+                state.categories = action.payload;
+            });
+        builder
+            .addCase(GetAllPro.pending, (state) => {
+                state.isloadingCat = true;
+            })
+            .addCase(GetAllPro.fulfilled, (state, action) => {
+                console.log(action);
+                state.isloadingCat = false;
+                state.categories = action.payload.data;
+            });
+        builder.addCase(AddCategory.fulfilled, (state: any, action) => {
+            state.categories.push(action.payload);
+        });
+    },
+});
+
+export default CategoryReducer.reducer;
