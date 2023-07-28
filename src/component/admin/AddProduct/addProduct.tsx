@@ -23,7 +23,7 @@ const AddProduct = () => {
     }));
   };
 
-  const onHandleSubmit = async (e) => {
+  const onHandleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       dispatch(AddProductAction(formData));
