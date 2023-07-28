@@ -1,3 +1,4 @@
+import { createAsyncThunk } from "@reduxjs/toolkit"
 import { instance } from "../api/instance"
 import { pause } from "../utils/pause"
 
@@ -26,3 +27,13 @@ export const getOneCat = (id: any) => async (dispatch: any) => {
         dispatch({ type: "cat/getonesuccess" })
     }
 }
+export const AddCategory = createAsyncThunk(
+    "categories/add",
+    async (cat: any) => {
+        // await pause(500)
+        const data = await instance.post(
+            '/categories/add', cat
+        );
+        return data;
+    }
+);

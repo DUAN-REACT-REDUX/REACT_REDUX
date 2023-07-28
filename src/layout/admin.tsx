@@ -538,24 +538,30 @@ const AdminLayout: React.FC = () => {
                       data-target="#submenu-4"
                       aria-controls="submenu-4"
                     >
-                      <i className="fab fa-fw fa-wpforms"></i>Forms
+                      <i className="fab fa-fw fa-wpforms"></i>Categories
                     </a>
                     <div id="submenu-4" className="collapse submenu">
                       <ul className="nav flex-column">
                         <li className="nav-item">
-                          <a
-                            className="nav-link"
-                            href="pages/form-elements.html"
-                          >
-                            Form Elements
+                          <a className="nav-link">
+                            <Link
+                              to="category"
+                              style={{ textDecoration: "none", color: "white" }}
+                            >
+                              List Category{" "}
+                            </Link>
+                            <span className="badge badge-secondary">New</span>
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a
-                            className="nav-link"
-                            href="pages/form-validation.html"
-                          >
-                            Parsely Validations
+                          <a className="nav-link">
+                            <Link
+                              to="category/add"
+                              style={{ textDecoration: "none", color: "white" }}
+                            >
+                              Add Category{" "}
+                            </Link>
+                            <span className="badge badge-secondary">New</span>
                           </a>
                         </li>
                         <li className="nav-item">
