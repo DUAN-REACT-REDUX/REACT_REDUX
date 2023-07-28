@@ -29,3 +29,11 @@ export const AddProductAction = createAsyncThunk(
     return data;
   }
 );
+export const DeleteProduct = createAsyncThunk(
+  "products/delete",
+  async (productId: any) => {
+    console.log(productId);
+    await instance.delete(`/products/${productId}`);
+    return productId;
+  }
+);
