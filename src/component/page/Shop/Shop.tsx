@@ -1,16 +1,20 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Get9Product, fetch9Product, fetchProduct } from "../../../actions/product"
+import { Pagination } from "antd"
 
 
 const Shop = () => {
     const dispatch = useDispatch<any>()
-    const { products } = useSelector((state: any) => state.products)
+    const { products, currentPage } = useSelector((state: any) => state.products)
     useEffect(() => {
         dispatch(fetch9Product())
     }, [])
     console.log(products);
-
+    const  onTotal= (total:any)=>{
+        console.log(total);
+        dispatch(Get9Product(total))
+    }
     return (
         <>
             <div className="container-fluid bg-secondary mb-5">
@@ -190,19 +194,12 @@ const Shop = () => {
                             <div className="col-12 pb-1">
                                 <nav aria-label="Page navigation">
                                     <ul className="pagination justify-content-center mb-3">
-
-                                        {
-                                            (() => {
-                                                const productList = [];
-                                                let i = 0
-                                                for (const product in products) {
-                                                  
-                                                    i++
-                                                    productList.push(<li className="page-item"><a className="page-link" href="#" onClick={()=> dispatch(Get9Product(i))}>{i}</a></li>);
-                                                }
-                                                return productList;
-                                            })()
-                                        }
+                                        <Pagination
+                                            pageSize={1}
+                                            total={products.totalPages}
+                                            current={currentPage}
+                                            onChange={(page) => onTotal(page)}
+                                        />
                                     </ul>
                                 </nav>
                             </div>
