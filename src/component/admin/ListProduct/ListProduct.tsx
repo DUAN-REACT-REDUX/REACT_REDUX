@@ -29,6 +29,8 @@ const ListProduct: React.FC = () => {
   useEffect(() => {
     dispatch(fetchProduct());
   }, []);
+  // console.log(products);
+  
   if (isloading) {
     return (
       <div className="loader" style={{ marginTop: "150px" }}>

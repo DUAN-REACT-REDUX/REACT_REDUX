@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   AddProductAction,
   DeleteProduct,
+  Get9Product,
   GetAllPro,
+  fetch9Product,
   fetchProduct,
 } from "../actions/product";
 
@@ -47,6 +49,20 @@ const ProductReducer = createSlice({
       state.products.data = state.products?.data.filter(
         (product: any) => product.product_id !== action.payload
       );
+    });
+    builder.addCase(fetch9Product.fulfilled, (state: any, action) => {
+      // console.log(state.products.data);
+      console.log(action.payload);
+
+      state.products = action.payload
+   
+    });
+    builder.addCase(Get9Product.fulfilled, (state: any, action) => {
+      console.log(state.products.data);
+      console.log(action.payload);
+
+      state.products = action.payload.data
+      state.currentPage = action.payload.total
     });
   },
 });
