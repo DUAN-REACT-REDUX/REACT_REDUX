@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import './css/style.css'
-import 'font-awesome/css/font-awesome.min.css';
+// import 'font-awesome/css/font-awesome.min.css';
 const Client = () => {
     return (
         <>
