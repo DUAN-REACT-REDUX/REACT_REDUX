@@ -11,6 +11,7 @@ import AddCat from "./component/admin/AddCat/AddCat";
 import ListCategories from "./component/admin/ListCategory/ListCategory";
 import Shop from "./component/page/Shop/Shop";
 import Login from "./component/auth/Login/Login";
+import Register from "./component/auth/Register/Register";
 function App() {
   return (
     <div>
@@ -41,6 +42,7 @@ function App() {
             </Route> */}
           </Route>
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Routes>
       </Router>
     </div>

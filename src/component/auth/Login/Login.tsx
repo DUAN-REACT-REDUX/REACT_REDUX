@@ -7,7 +7,7 @@ const Login = () => {
                 <div className="container-login100">
                     <div className="wrap-login100">
                         <div className="login100-pic js-tilt" data-tilt>
-                            <img src="http://127.0.0.1:5500/images/img-01.png" alt="IMG" />
+                            <img src="https://colorlib.com/etc/lf/Login_v1/images/img-01.png" alt="IMG" />
                         </div>
                         <form className="login100-form validate-form">
                             <span className="login100-form-title">
@@ -41,7 +41,7 @@ const Login = () => {
                                 </a>
                             </div>
                             <div className="text-center p-t-136">
-                                <a className="txt2" href="#">
+                                <a className="txt2" href="register">
                                     Create your Account
                                     <i className="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                                 </a>
