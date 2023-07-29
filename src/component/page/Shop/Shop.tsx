@@ -179,7 +179,7 @@ const Shop = () => {
                                             <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                                 <h6 className="text-truncate mb-3">{data.name}</h6>
                                                 <div className="d-flex justify-content-center">
-                                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>{data.price}</del></h6>
+                                                    <h6 style={{fontWeight:"bold"}}>${data.price}</h6>
                                                 </div>
                                             </div>
                                             <div className="card-footer d-flex justify-content-between bg-light border">
