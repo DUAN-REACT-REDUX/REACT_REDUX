@@ -9,6 +9,7 @@ import Client from "./layout/client/Client";
 import HomePage from "./component/page/HomePage/HomePage";
 import AddCat from "./component/admin/AddCat/AddCat";
 import ListCategories from "./component/admin/ListCategory/ListCategory";
+import Shop from "./component/page/Shop/Shop";
 function App() {
   return (
     <div>
@@ -30,11 +31,11 @@ function App() {
           </Route>
           <Route path="/" element={<Client />}>
             <Route index element={<HomePage />} />
-            {/*  <Route path="product">
-              <Route index element={<ListProduct />} />
-              <Route path="add" element={<AddProduct />} />
+            <Route path="shop">
+              <Route index element={<Shop />} />
+              {/* <Route path="add" element={<AddProduct />} /> */}
             </Route>
-            <Route path="users">
+            {/*  <Route path="users">
               <Route index element={<ListUser />} />
             </Route> */}
           </Route>
