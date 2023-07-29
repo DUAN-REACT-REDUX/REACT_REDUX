@@ -9,13 +9,31 @@ export const fetchProduct = createAsyncThunk("products/fetch", async () => {
   );
   return data;
 });
-
+export const fetch9Product = createAsyncThunk("products/fetch9", async () => {
+  await pause(2000);
+  const { data } = await instance.get(
+    "products?_sort=price&_page=1&_order=desc&_limit=9"
+  );
+  return data;
+});
 export const GetAllPro = createAsyncThunk(
   "products/get",
   async (total: any) => {
     // await pause(500)
     const { data } = await instance.get(
       `products?_sort=price&_page=${total}&_order=desc&_limit=5`
+    );
+    return { total, data };
+  }
+);
+export const Get9Product = createAsyncThunk(
+  "products/get9",
+  async (total: any) => {
+    console.log(total-1);
+    
+    // await pause(500)
+    const { data } = await instance.get(
+      `products?_page=${total}&_order=desc&_limit=9`
     );
     return { total, data };
   }
