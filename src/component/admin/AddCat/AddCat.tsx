@@ -9,6 +9,7 @@ import {
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddCategory } from '../../../actions/category';
+import { useNavigate } from 'react-router-dom';
 const normFile = (e: any) => {
     if (Array.isArray(e)) {
         return e;
@@ -20,7 +21,7 @@ const AddCat: React.FC = () => {
     const [name, setname] = useState([])
     const [image, setimage] = useState('')
     const dispatch = useDispatch<any>();
-
+    const navigate = useNavigate()
     const handleUpload = async ({ file }: any) => {
         const cloud_name = 'dw6wgytc3';
         const preset_name = 'demo_upload';
@@ -45,6 +46,10 @@ const AddCat: React.FC = () => {
     if (image) {
         alert("done")
     }
+    const handleAdd = () => {
+        dispatch(AddCategory({ name: name, image: image }))
+        navigate('/admin/categories')
+    }
     return (
         <>
             <Form
@@ -52,7 +57,7 @@ const AddCat: React.FC = () => {
                 wrapperCol={{ span: 14 }}
                 layout="horizontal"
                 style={{ maxWidth: 600 }}
-                onFinish={() => dispatch(AddCategory({ name: name, image: image }))}
+                onFinish={() => dispatch(AddCategory({ name: name, image: `${image}` }))}
             >
                 <Form.Item label="Name Category">
                     <Input onChange={(e: any) => setname(e.target.value)} />
@@ -65,7 +70,7 @@ const AddCat: React.FC = () => {
                     </Upload>
                 </Form.Item>
                 {image ? <Form.Item label="Add Category">
-                    <Button onClick={() => dispatch(AddCategory({ name: name, image: image }))}>Add Category</Button>
+                    <Button onClick={handleAdd}>Add Category</Button>
                 </Form.Item> : ""
                 }
 

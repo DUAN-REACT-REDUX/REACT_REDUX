@@ -84,7 +84,7 @@ const Client = () => {
                             </button>
                             <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                                 <div className="navbar-nav mr-auto py-0">
-                                    <a href="" className="nav-item nav-link active">Home</a>
+                                    <a href="/" className="nav-item nav-link active">Home</a>
                                     <a href="/shop" className="nav-item nav-link">Shop</a>
                                     <a href="detail.html" className="nav-item nav-link">About</a>
                                     <a href="detail.html" className="nav-item nav-link">Blog</a>
