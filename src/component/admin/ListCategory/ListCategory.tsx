@@ -83,7 +83,7 @@ const ListCategories: React.FC = () => {
     ];
     return (
         <>
-            <h1>List Product</h1>
+            <h1>List Categories</h1>
             <div style={{ padding: "16px" }}>
                 <Table
                     columns={columns}
