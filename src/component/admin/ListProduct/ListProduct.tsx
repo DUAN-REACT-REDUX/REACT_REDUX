@@ -30,7 +30,7 @@ const ListProduct: React.FC = () => {
     dispatch(fetchProduct());
   }, []);
   // console.log(products);
-  
+
   if (isloading) {
     return (
       <div className="loader" style={{ marginTop: "150px" }}>
@@ -93,6 +93,7 @@ const ListProduct: React.FC = () => {
       key: "image",
       render(e: any) {
         return <img src={e.image} alt="" style={{ width: "10%" }} />;
+        // return e.image;
       },
     },
     {
