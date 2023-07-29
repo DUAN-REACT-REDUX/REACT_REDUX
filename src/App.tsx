@@ -10,6 +10,7 @@ import HomePage from "./component/page/HomePage/HomePage";
 import AddCat from "./component/admin/AddCat/AddCat";
 import ListCategories from "./component/admin/ListCategory/ListCategory";
 import Shop from "./component/page/Shop/Shop";
+import Login from "./component/auth/Login/Login";
 function App() {
   return (
     <div>
@@ -39,6 +40,7 @@ function App() {
               <Route index element={<ListUser />} />
             </Route> */}
           </Route>
+          <Route path="login" element={<Login />} />
         </Routes>
       </Router>
     </div>
