@@ -1,6 +1,8 @@
 import { produce } from "immer"
 import { createSlice } from "@reduxjs/toolkit";
 
+import { AddCategory, DeleteCategory, fetchCat, getAllCategory } from "../actions/category"
+
 import { AddCategory, fetchCat, getAllCategory, getOneCat } from "../actions/category"
 
 const initialState = {
@@ -44,6 +46,14 @@ const CategoryReducer = createSlice({
         builder.addCase(AddCategory.fulfilled, (state: any, action) => {
             state.categories.push(action.payload);
         });
+        builder.addCase(DeleteCategory.fulfilled, (state: any, action) => {
+            console.log(action.payload);
+
+            state.category.data = state.category?.data.filter(
+                (category: any) => category.cat_id != action.payload
+            );
+
+        })
     },
 });
 
