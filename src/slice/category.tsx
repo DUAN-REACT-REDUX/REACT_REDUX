@@ -3,8 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { AddCategory, DeleteCategory, fetchCat, getAllCategory } from "../actions/category"
 
-import { AddCategory, fetchCat, getAllCategory, getOneCat } from "../actions/category"
-
 const initialState = {
     categories: [],
     isloadingCat: false,
@@ -30,12 +28,10 @@ const CategoryReducer = createSlice({
             })
 
 
-        builder
-            .addCase(getOneCat.fulfilled, (state,action) => {
-                console.log(action);
-                state.categories=action.payload
-                
-            })
+        // builder
+        //     .addCase(getAllCategory.pending, (state) => {
+        //         state.isloadingCat = true;
+        //     })
         // builder.addCase(getAllCategory.fulfilled, (state, action) => {
         //     state.isloadingCat = false;
         //     state.categories = action.payload.data;
