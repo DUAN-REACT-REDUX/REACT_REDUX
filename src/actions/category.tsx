@@ -38,3 +38,12 @@ export const AddCategory = createAsyncThunk(
         return data;
     }
 );
+export const DeleteCategory = createAsyncThunk(
+    "categories/delete",
+    async (catId: any) => {
+        const data = await instance.delete(
+            `/categories/${catId}`,
+        );
+        return data;
+    }
+)

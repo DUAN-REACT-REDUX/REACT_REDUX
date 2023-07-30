@@ -2,11 +2,8 @@ import React, { useEffect } from "react";
 import { Table, Button, Pagination } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    DeleteProduct,
-} from "../../../actions/product";
 
-import { fetchCat, getAllCategory, getOneCat } from "../../../actions/category";
+import { DeleteCategory, fetchCat, getAllCategory, getOneCat } from "../../../actions/category";
 interface DataType {
     key: string;
     name: string;
@@ -70,7 +67,7 @@ const ListCategories: React.FC = () => {
                     <>
                         <Button
                             danger
-                            onClick={() => dispatch(DeleteProduct(id.product_id))}
+                            onClick={() => dispatch(DeleteCategory(id.cat_id))}
                         >
                             DELETE
                         </Button>
