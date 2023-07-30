@@ -91,8 +91,9 @@ const ListProduct: React.FC = () => {
     {
       title: "Image",
       key: "image",
+      width:"20%",
       render(e: any) {
-        return <img src={e.image} alt="" style={{ width: "10%" }} />;
+        return <img src={e.image} alt="" style={{ width: "40%" }} />;
         // return e.image;
       },
     },

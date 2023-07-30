@@ -105,7 +105,6 @@ const AddProduct: React.FC = () => {
           <Select onChange={handleCategoryChange}>
             <Option value="1">Category 1</Option>
             <Option value="2">Category 2</Option>
-            {/* Add more Option elements for other categories */}
           </Select>
         </Form.Item>
 
