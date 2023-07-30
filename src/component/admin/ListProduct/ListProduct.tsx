@@ -9,7 +9,7 @@ import {
 } from "../../../actions/product";
 import "./loadingfetch.css";
 import "./custom-table.css";
-import { getOneCat } from "../../../actions/category";
+import { fetchCat, getOneCat } from "../../../actions/category";
 interface DataType {
   key: string;
   name: string;
@@ -28,6 +28,7 @@ const ListProduct: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchProduct());
+    dispatch(fetchCat())
   }, []);
   // console.log(products);
 
@@ -116,8 +117,11 @@ const ListProduct: React.FC = () => {
       title: "Categories",
       key: "cat_id",
       render: (record: any) => {
-        const category = categories?.data.find(
+        console.log(categories);
+        
+        const category = categories?.data?.find(
           (item: any) => item.cat_id === record.cat_id
+
         );
         return category ? category.name : "N/A";
       },
