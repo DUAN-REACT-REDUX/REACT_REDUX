@@ -1,10 +1,11 @@
 import axios from "axios";
 import { Button, Form, Input, Upload } from "antd";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AddProductAction } from "../../../actions/product";
 import { Select } from "antd";
+import { fetchCat, getAllCategory } from "../../../actions/category";
 const { Option } = Select;
 
 const normFile = (e: any) => {
@@ -20,10 +21,14 @@ const AddProduct: React.FC = () => {
   const [quantity, setquantity] = useState(0);
   const [description, setdescription] = useState("");
   const [color, setcolor] = useState("");
-  const [cat_id, setCatId] = useState("");
+  const [cat_id, setCatId] = useState(0);
   const [image, setimage] = useState("");
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(fetchCat());
+  }, []);
+  const { categories } = useSelector((state: any) => state.category);
 
   //
   const handleUpload = async ({ file }: any) => {
@@ -63,6 +68,7 @@ const AddProduct: React.FC = () => {
   };
   const handleCategoryChange = (value: any) => {
     setCatId(value);
+    console.log(value);
   };
 
   return (
@@ -103,8 +109,13 @@ const AddProduct: React.FC = () => {
         </Form.Item>
         <Form.Item label="Category">
           <Select onChange={handleCategoryChange}>
-            <Option value="1">Category 1</Option>
-            <Option value="2">Category 2</Option>
+            {categories?.data?.map((item: any) => {
+              return (
+                <>
+                  <Option value={item.cat_id}>{item.name}</Option>
+                </>
+              );
+            })}
           </Select>
         </Form.Item>
 
