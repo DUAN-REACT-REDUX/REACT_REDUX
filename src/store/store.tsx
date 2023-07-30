@@ -3,11 +3,13 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import ProductReducer from "../slice/product";
 import CategoryReducer from "../slice/category";
 import UserReducer from "../slice/user"
+import AuthReducer from "../slice/auth"
 const store = configureStore({
     reducer: {
         products: ProductReducer,
         category: CategoryReducer,
-        users: UserReducer
+        users: UserReducer,
+        auth: AuthReducer
         // cart: cartReducer
     }
 })
