@@ -1,27 +1,54 @@
+import { useState } from 'react'
 import './css/main.css'
 import './css/util.css'
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../../actions/auth';
+import { Result } from 'antd';
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
+    const dispatch = useDispatch()
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const userLogin = {
+            email, password
+        }
+        dispatch(logIn(userLogin)).then((result) => {
+            if (result.payload) {
+                console.log("success")
+                setPassword('');
+                setEmail('');
+                //Navigate to home page
+            } else {
+                console.log("Fail")
+            }
+        })
+    }
     return (
+
+
         <>
-            <div className="limiter">
+            <div className="limiter"        >
                 <div className="container-login100">
                     <div className="wrap-login100">
                         <div className="login100-pic js-tilt" data-tilt>
                             <img src="https://colorlib.com/etc/lf/Login_v1/images/img-01.png" alt="IMG" />
                         </div>
-                        <form className="login100-form validate-form">
+                        <form className="login100-form validate-form" onSubmit={handleLogin}>
                             <span className="login100-form-title">
                                 Login
                             </span>
                             <div className="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                                <input className="input100" type="text" name="email" placeholder="Email" />
+                                <input className="input100" type="text" name="email" placeholder="Email" value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
                                     <i className="fa fa-envelope" aria-hidden="true"></i>
                                 </span>
                             </div>
                             <div className="wrap-input100 validate-input" data-validate="Password is required">
-                                <input className="input100" type="password" name="pass" placeholder="Password" />
+                                <input className="input100" type="password" name="pass" placeholder="Password" value={password}
+                                    onChange={(e) => setPassword(e.target.value)} />
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
                                     <i className="fa fa-lock" aria-hidden="true"></i>
