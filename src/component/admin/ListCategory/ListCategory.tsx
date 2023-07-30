@@ -13,8 +13,8 @@ interface DataType {
 let dispatched = false;
 
 const ListCategories: React.FC = () => {
-    const dispatch = useDispatch<any>();
-    const { categories, isloading, error, currentPage } = useSelector((state: any) => state.category);
+    const dispatch = useDispatch<any>() 
+    const { categories, isloading, error } = useSelector((state: any) => state.category);
 
     useEffect(() => {
         dispatch(fetchCat());
@@ -40,14 +40,11 @@ const ListCategories: React.FC = () => {
     if (error) {
         return <h2>{error}</h2>;
     }
-    // const onTotal = (page: number) => {
-    //     dispatch(getAllCategory(page));
-    // };
-
     const columns: ColumnsType<DataType> = [
         {
             title: "Name",
             key: "name",
+            width: "30%",
             render(e: any) {
                 return e.name;
             },
@@ -55,6 +52,7 @@ const ListCategories: React.FC = () => {
         {
             title: "Image",
             key: "image",
+            width: "30%",
             render(e: any) {
                 return <img src={e.image} alt="" style={{ width: "10%" }} />;
             },
@@ -62,6 +60,7 @@ const ListCategories: React.FC = () => {
         {
             title: "Action",
             key: "action",
+            width: "30%",
             render: (id: any) => {
                 return (
                     <>
@@ -69,6 +68,7 @@ const ListCategories: React.FC = () => {
                             danger
                             onClick={() => dispatch(DeleteCategory(id.cat_id))}
                         >
+                        <Button danger>
                             DELETE
                         </Button>
                         <span> </span>
@@ -89,12 +89,6 @@ const ListCategories: React.FC = () => {
                     rowKey="_id"
                 />
             </div>
-            {/* <Pagination
-                pageSize={1}
-                total={categories.totalPages}
-                current={currentPage}
-                onChange={(page) => onTotal(page)}
-            /> */}
         </>
     );
 };

@@ -1,86 +1,147 @@
-// AddProduct.js
-import React, { useState } from "react";
+import axios from "axios";
+import { Button, Form, Input, Upload } from "antd";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { AddProductAction } from "../../../actions/product";
+import { Select } from "antd";
+import { fetchCat, getAllCategory } from "../../../actions/category";
+const { Option } = Select;
 
-const AddProduct = () => {
-  const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    name: "",
-    price: 0,
-    quantity: 0,
-    description: "",
-    color: "",
-    image: "",
-    cat_id: 1,
-  });
+const normFile = (e: any) => {
+  if (Array.isArray(e)) {
+    return e;
+  }
+  return e?.fileList;
+};
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+const AddProduct: React.FC = () => {
+  const [name, setname] = useState([]);
+  const [price, setprice] = useState(0);
+  const [quantity, setquantity] = useState(0);
+  const [description, setdescription] = useState("");
+  const [color, setcolor] = useState("");
+  const [cat_id, setCatId] = useState(0);
+  const [image, setimage] = useState("");
+  const dispatch = useDispatch<any>();
+  const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(fetchCat());
+  }, []);
+  const { categories } = useSelector((state: any) => state.category);
+
+  //
+  const handleUpload = async ({ file }: any) => {
+    const cloud_name = "dw6wgytc3";
+    const preset_name = "demo_upload";
+    const folder_name = "DUAN";
+    const api = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
+
+    const formdata = new FormData();
+    formdata.append("upload_preset", preset_name);
+    formdata.append("folder", folder_name);
+
+    formdata.append("file", file);
+    const response = await axios.post(api, formdata, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    setimage(response.data.secure_url);
   };
-
-  const onHandleSubmit = async (e: any) => {
-    e.preventDefault();
-    try {
-      dispatch(AddProductAction(formData));
-    } catch (error) {
-      console.log(error);
-    }
+  //
+  console.log(image, name, price, quantity, description, color, cat_id);
+  if (image) {
+    alert("done");
+  }
+  const handleAdd = () => {
+    dispatch(
+      AddProductAction({
+        name: name,
+        price: price,
+        quantity: quantity,
+        description: description,
+        color: color,
+        cat_id: cat_id,
+        image: image,
+      })
+    );
+    navigate("/admin/product");
+  };
+  const handleCategoryChange = (value: any) => {
+    setCatId(value);
+    console.log(value);
   };
 
   return (
-    <div>
-      <form action="" onSubmit={onHandleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Product Name"
-        />
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-          placeholder="Price"
-        />
-        <input
-          type="number"
-          name="quantity"
-          value={formData.quantity}
-          onChange={handleChange}
-          placeholder="quantity"
-        />
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="description"
-        />
-        <input
-          type="text"
-          name="color"
-          value={formData.color}
-          onChange={handleChange}
-          placeholder="color"
-        />
-        <input
-          type="text"
-          name="image"
-          value={formData.image}
-          onChange={handleChange}
-          placeholder="image"
-        />
+    <>
+      <Form
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 14 }}
+        layout="horizontal"
+        style={{ maxWidth: 600 }}
+        onFinish={() =>
+          dispatch(
+            AddProductAction({
+              name: name,
+              price: price,
+              quantity: quantity,
+              description: description,
+              color: color,
+              catId: cat_id,
+              image: `${image}`,
+            })
+          )
+        }
+      >
+        <Form.Item label="Name ">
+          <Input onChange={(e: any) => setname(e.target.value)} />
+        </Form.Item>
+        <Form.Item label="Price ">
+          <Input onChange={(e: any) => setprice(e.target.value)} />
+        </Form.Item>
+        <Form.Item label="Quantity ">
+          <Input onChange={(e: any) => setquantity(e.target.value)} />
+        </Form.Item>
+        <Form.Item label="Description ">
+          <Input onChange={(e: any) => setdescription(e.target.value)} />
+        </Form.Item>
+        <Form.Item label="Color ">
+          <Input onChange={(e: any) => setcolor(e.target.value)} />
+        </Form.Item>
+        <Form.Item label="Category">
+          <Select onChange={handleCategoryChange}>
+            {categories?.data?.map((item: any) => {
+              return (
+                <>
+                  <Option value={item.cat_id}>{item.name}</Option>
+                </>
+              );
+            })}
+          </Select>
+        </Form.Item>
 
-        <button type="submit">Add</button>
-      </form>
-    </div>
+        <Form.Item
+          label="Upload Image"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+        >
+          <Upload
+            listType="picture-card"
+            customRequest={({ file }: any) => handleUpload({ file })}
+          >
+            <div>
+              <div style={{ marginTop: 8 }}>Upload</div>
+            </div>
+          </Upload>
+        </Form.Item>
+        {image ? (
+          <Form.Item label="Add Product">
+            <Button onClick={handleAdd}>Add Product</Button>
+          </Form.Item>
+        ) : (
+          ""
+        )}
+      </Form>
+    </>
   );
 };
 

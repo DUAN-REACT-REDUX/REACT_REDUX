@@ -9,7 +9,7 @@ import {
 } from "../../../actions/product";
 import "./loadingfetch.css";
 import "./custom-table.css";
-import { getOneCat } from "../../../actions/category";
+import { fetchCat, getOneCat } from "../../../actions/category";
 interface DataType {
   key: string;
   name: string;
@@ -28,9 +28,10 @@ const ListProduct: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchProduct());
+    dispatch(fetchCat())
   }, []);
   // console.log(products);
-  
+
   if (isloading) {
     return (
       <div className="loader" style={{ marginTop: "150px" }}>
@@ -91,8 +92,10 @@ const ListProduct: React.FC = () => {
     {
       title: "Image",
       key: "image",
+      width: "20%",
       render(e: any) {
-        return <img src={e.image} alt="" style={{ width: "10%" }} />;
+        return <img src={e.image} alt="" style={{ width: "40%" }} />;
+        // return e.image;
       },
     },
     {
@@ -113,15 +116,17 @@ const ListProduct: React.FC = () => {
     {
       title: "Categories",
       key: "cat_id",
-      render: (e: any) => {
-        if (!dispatched) {
-          dispatch(getOneCat(e.cat_id));
-          dispatched = true;
-        }
+      render: (record: any) => {
+        console.log(categories);
+        
+        const category = categories?.data?.find(
+          (item: any) => item.cat_id === record.cat_id
 
-        return categories?.name;
+        );
+        return category ? category.name : "N/A";
       },
     },
+
     {
       title: "Action",
       key: "action",

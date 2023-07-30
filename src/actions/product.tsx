@@ -29,11 +29,11 @@ export const GetAllPro = createAsyncThunk(
 export const Get9Product = createAsyncThunk(
   "products/get9",
   async (total: any) => {
-    console.log(total-1);
-    
+    console.log(total);
+
     // await pause(500)
     const { data } = await instance.get(
-      `products?_page=${total}&_order=desc&_limit=9`
+      `products?_sort=price&_page=${total}&_order=desc&_limit=9`
     );
     return { total, data };
   }

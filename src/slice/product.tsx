@@ -54,15 +54,14 @@ const ProductReducer = createSlice({
       // console.log(state.products.data);
       console.log(action.payload);
 
-      state.products = action.payload
-   
+      state.products = action.payload;
     });
     builder.addCase(Get9Product.fulfilled, (state: any, action) => {
       console.log(state.products.data);
       console.log(action.payload);
 
-      state.products = action.payload.data
-      state.currentPage = action.payload.total
+      state.products = action.payload.data;
+      state.currentPage = action.payload.total;
     });
   },
 });

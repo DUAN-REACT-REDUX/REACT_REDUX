@@ -1,16 +1,20 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Get9Product, fetch9Product, fetchProduct } from "../../../actions/product"
+import { Pagination } from "antd"
 
 
 const Shop = () => {
     const dispatch = useDispatch<any>()
-    const { products } = useSelector((state: any) => state.products)
+    const { products, currentPage } = useSelector((state: any) => state.products)
     useEffect(() => {
         dispatch(fetch9Product())
     }, [])
     console.log(products);
-
+    const  onTotal= (total:any)=>{
+        console.log(total);
+        dispatch(Get9Product(total))
+    }
     return (
         <>
             <div className="container-fluid bg-secondary mb-5">
@@ -175,7 +179,7 @@ const Shop = () => {
                                             <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                                 <h6 className="text-truncate mb-3">{data.name}</h6>
                                                 <div className="d-flex justify-content-center">
-                                                    <h6>$123.00</h6><h6 className="text-muted ml-2"><del>{data.price}</del></h6>
+                                                    <h6 style={{fontWeight:"bold"}}>${data.price}</h6>
                                                 </div>
                                             </div>
                                             <div className="card-footer d-flex justify-content-between bg-light border">
@@ -190,19 +194,12 @@ const Shop = () => {
                             <div className="col-12 pb-1">
                                 <nav aria-label="Page navigation">
                                     <ul className="pagination justify-content-center mb-3">
-
-                                        {
-                                            (() => {
-                                                const productList = [];
-                                                let i = 0
-                                                for (const product in products) {
-                                                  
-                                                    i++
-                                                    productList.push(<li className="page-item"><a className="page-link" href="#" onClick={()=> dispatch(Get9Product(i))}>{i}</a></li>);
-                                                }
-                                                return productList;
-                                            })()
-                                        }
+                                        <Pagination
+                                            pageSize={1}
+                                            total={products.totalPages}
+                                            current={currentPage}
+                                            onChange={(page) => onTotal(page)}
+                                        />
                                     </ul>
                                 </nav>
                             </div>

@@ -91,8 +91,8 @@ const Client = () => {
                                     <a href="contact.html" className="nav-item nav-link">Contact</a>
                                 </div>
                                 <div className="navbar-nav ml-auto py-0">
-                                    <a href="" className="nav-item nav-link">Login</a>
-                                    <a href="" className="nav-item nav-link">Register</a>
+                                    <a href="login" className="nav-item nav-link">Login</a>
+                                    <a href="register" className="nav-item nav-link">Register</a>
                                 </div>
                             </div >
                         </div >

@@ -556,7 +556,7 @@ const AdminLayout: React.FC = () => {
                         <li className="nav-item">
                           <a className="nav-link">
                             <Link
-                              to="category/add"
+                              to="categories/add"
                               style={{ textDecoration: "none", color: "white" }}
                             >
                               Add Category{" "}

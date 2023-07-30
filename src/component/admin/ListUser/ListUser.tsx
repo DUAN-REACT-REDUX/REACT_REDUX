@@ -123,9 +123,10 @@ const ListUser: React.FC = () => {
         {
             title: 'Image',
             key: 'image',
+            width:"15%",
             render(e: any) {
                 return (
-                    <img src={e.image} alt="" style={{ width: "10%" }} />
+                    <img src={e.image} alt="" style={{ width: "40%" }} />
                 );
             }
         },
