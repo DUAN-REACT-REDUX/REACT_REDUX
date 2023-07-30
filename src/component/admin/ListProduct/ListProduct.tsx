@@ -91,7 +91,7 @@ const ListProduct: React.FC = () => {
     {
       title: "Image",
       key: "image",
-      width:"20%",
+      width: "20%",
       render(e: any) {
         return <img src={e.image} alt="" style={{ width: "40%" }} />;
         // return e.image;
@@ -115,15 +115,14 @@ const ListProduct: React.FC = () => {
     {
       title: "Categories",
       key: "cat_id",
-      render: (e: any) => {
-        if (!dispatched) {
-          dispatch(getOneCat(e.cat_id));
-          dispatched = true;
-        }
-
-        return categories?.name;
+      render: (record: any) => {
+        const category = categories?.data.find(
+          (item: any) => item.cat_id === record.cat_id
+        );
+        return category ? category.name : "N/A";
       },
     },
+
     {
       title: "Action",
       key: "action",
