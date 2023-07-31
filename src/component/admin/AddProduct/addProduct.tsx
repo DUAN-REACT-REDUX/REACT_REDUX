@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AddProductAction } from "../../../actions/product";
 import { Select } from "antd";
-import { fetchCat, getAllCategory } from "../../../actions/category";
+import { fetchCat } from "../../../actions/category";
 const { Option } = Select;
 
 const normFile = (e: any) => {

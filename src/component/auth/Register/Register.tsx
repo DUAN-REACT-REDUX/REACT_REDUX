@@ -4,23 +4,21 @@ import './css/util.css'
 import { useState } from 'react';
 import { Signup } from '../../../actions/auth';
 import { useNavigate } from 'react-router-dom';
-import toastr from 'toastr'
-
 const Register = () => {
-    const [name, setName] = useState('');
-    const [province, setProvince] = useState('')
-    const [district, setDistrict] = useState('')
-    const [ward, setWard] = useState('')
+    const [name, setName] = useState<any>();
+    const [province, setProvince] = useState<any>('')
+    const [district, setDistrict] = useState<any>('')
+    const [ward, setWard] = useState<any>('')
     const [address, setAddress] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [image, setImage] = useState('')
     const [confirm, setConfirm] = useState('')
     const dispatch = useDispatch<any>()
-    const handleSignup = (e: any) => {
-        // const navigate = useNavigate()
+    const navigate = useNavigate()
+    const handleSignup = async (e: any) => {
         e.preventDefault();
-        dispatch(Signup({
+        await dispatch(Signup({
             name,
             email,
             province,
@@ -32,8 +30,7 @@ const Register = () => {
             confirmpassword: confirm,
             role: ""
         }))
-        // navigate('/')
-
+        navigate('/login')
     }
     return (
         <>

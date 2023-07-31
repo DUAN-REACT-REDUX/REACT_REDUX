@@ -7,10 +7,10 @@ type AuthState = {
     error: string
 }
 const initialState = {
-    user: {},
+    user: [],
     isloading: false,
     error: ""
-} as AuthState;
+} as any;
 const AuthReducer = createSlice({
     name: "auth",
     initialState,
@@ -19,16 +19,15 @@ const AuthReducer = createSlice({
         builder
             .addCase(logIn.pending, (state) => {
                 state.user = {};
-                state.isloading = false;
+                state.isloading = true;
                 state.error = "";
 
             })
-            .addCase(logIn.fulfilled, (state, action) => {
+            .addCase(logIn.fulfilled, (state:any, action) => {
                 state.user = action.payload;
-                state.isloading = false;
-                state.error = "";
+               state.isloading = false;
             })
-            .addCase(logIn.rejected, (state, action) => {
+            .addCase(logIn.rejected, (state:any, action) => {
                 state.user = null;
                 state.isloading = false;
                 state.error = "";
@@ -49,7 +48,7 @@ const AuthReducer = createSlice({
 
 
             })
-            .addCase(Signup.rejected, (state, action) => {
+            .addCase(Signup.rejected, (state:any, action) => {
                 state.user = null;
                 state.isloading = false;
                 state.error = "";
