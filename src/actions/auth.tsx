@@ -10,12 +10,16 @@ export const logIn = createAsyncThunk('auth/login', async (userLogin) => {
     localStorage.setItem('token', "du_an_fw2");
     return data
 });
-export const Signup = createAsyncThunk('auth/signup', async (userLogin) => {
+export const Signup = createAsyncThunk('auth/signup', async (user) => {
+    console.log(user)
+
     await pause(2000)
-    const { data } = await instance.post('signup', userLogin)
+    const { data } = await instance.post('signup', user)
+    console.log(data)
+
     //Save access token
     // localStorage.setItem('token',data.token);
-    localStorage.setItem('token', "du_an_fw2");
+
     return data
 });
 

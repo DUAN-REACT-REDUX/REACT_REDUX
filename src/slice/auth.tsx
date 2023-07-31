@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logIn, Signup } from "../actions/auth";
+
 type AuthState = {
     user: Object,
     isloading: boolean,
@@ -45,6 +46,8 @@ const AuthReducer = createSlice({
                 state.user = action.payload;
                 state.isloading = false;
                 state.error = "";
+
+
             })
             .addCase(Signup.rejected, (state, action) => {
                 state.user = null;
