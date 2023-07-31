@@ -3,7 +3,9 @@ import './css/main.css'
 import './css/util.css'
 import { useState } from 'react';
 import { Signup } from '../../../actions/auth';
+import { useNavigate } from 'react-router-dom';
 import toastr from 'toastr'
+
 const Register = () => {
     const [name, setName] = useState('');
     const [province, setProvince] = useState('')
@@ -13,21 +15,25 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [image, setImage] = useState('')
+    const [confirm, setConfirm] = useState('')
     const dispatch = useDispatch<any>()
-    const handleSignup = (e:any) => {
+    const handleSignup = (e: any) => {
+        // const navigate = useNavigate()
         e.preventDefault();
-        dispatch(Signup(userSignup)).then((result) => {
-            if (result.payload) {
-                console.log("success")
-                setPassword('');
-                setEmail('');
-                window.location.href = '/login';
-                toastr.success('Đăng ký thành công!', 'Thông báo');
-            } else {
-                console.log("Fail")
-                toastr.error('Đăng ký thất bại!', 'Thông báo');
-            }
-        })
+        dispatch(Signup({
+            name,
+            email,
+            province,
+            district,
+            ward,
+            address,
+            image,
+            password,
+            confirmpassword: confirm,
+            role: ""
+        }))
+        // navigate('/')
+
     }
     return (
         <>
@@ -66,7 +72,7 @@ const Register = () => {
                                 </span>
                             </div>
                             <div className="wrap-input100 validate-input" data-validate="Password is required">
-                                <input className="input100" type="password" name="pass" placeholder="Confirm Password" />
+                                <input className="input100" type="password" name="pass" placeholder="Confirm Password" onChange={(e: any) => setConfirm(e.target.value)} />
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
                                     <i className="fa fa-lock" aria-hidden="true"></i>
