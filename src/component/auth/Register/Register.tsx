@@ -13,12 +13,9 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [image, setImage] = useState('')
-    const dispatch = useDispatch()
-    const handleSignup = (e) => {
+    const dispatch = useDispatch<any>()
+    const handleSignup = (e:any) => {
         e.preventDefault();
-        const userSignup = {
-            name, province, district, ward, address, email, password, image
-        }
         dispatch(Signup(userSignup)).then((result) => {
             if (result.payload) {
                 console.log("success")
@@ -52,38 +49,6 @@ const Register = () => {
                                     <i className="fa fa-user" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <div className="wrap-input100 validate-input" >
-                                <input className="input100" type="text" name="province" placeholder="Province" value={province}
-                                    onChange={(e) => setProvince(e.target.value)} />
-                                <span className="focus-input100"></span>
-                                <span className="symbol-input100">
-                                    <i className="fa fa-frog" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div className="wrap-input100 validate-input" >
-                                <input className="input100" type="text" name="district" placeholder="District" value={district}
-                                    onChange={(e) => setDistrict(e.target.value)} />
-                                <span className="focus-input100"></span>
-                                <span className="symbol-input100">
-                                    <i className="fa fa-hippo" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div className="wrap-input100 validate-input" >
-                                <input className="input100" type="text" name="ward" placeholder="Ward" value={ward}
-                                    onChange={(e) => setWard(e.target.value)} />
-                                <span className="focus-input100"></span>
-                                <span className="symbol-input100">
-                                    <i className="fa fa-award" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div className="wrap-input100 validate-input" >
-                                <input className="input100" type="text" name="address" placeholder="Address" value={address}
-                                    onChange={(e) => setAddress(e.target.value)} />
-                                <span className="focus-input100"></span>
-                                <span className="symbol-input100">
-                                    <i className="fa fa-address-book" aria-hidden="true"></i>
-                                </span>
-                            </div>
                             <div className="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                                 <input className="input100" type="text" name="email" placeholder="Email" value={email}
                                     onChange={(e) => setEmail(e.target.value)} />
@@ -100,12 +65,11 @@ const Register = () => {
                                     <i className="fa fa-lock" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <div className="wrap-input100 validate-input" >
-                                <input className="input100" type="file" name="image" placeholder="Image" style={{ marginTop: "2px" }} value={image}
-                                    onChange={(e) => setImage(e.target.value)} />
+                            <div className="wrap-input100 validate-input" data-validate="Password is required">
+                                <input className="input100" type="password" name="pass" placeholder="Confirm Password" />
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
-                                    <i className="fa fa-image" aria-hidden="true"></i>
+                                    <i className="fa fa-lock" aria-hidden="true"></i>
                                 </span>
                             </div>
 
@@ -114,7 +78,12 @@ const Register = () => {
                                     Register
                                 </button>
                             </div>
-
+                            <div className="text-center p-t-136">
+                                <a className="txt2" href="register">
+                                    AdamStore
+                                    <i className="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
