@@ -9,7 +9,7 @@ import {
 } from "../../../actions/product";
 import "./loadingfetch.css";
 import "./custom-table.css";
-import { fetchCat, getOneCat } from "../../../actions/category";
+import { fetchCat } from "../../../actions/category";
 interface DataType {
   key: string;
   name: string;
@@ -17,7 +17,6 @@ interface DataType {
   address: string;
   tags: string[];
 }
-let dispatched = false;
 
 const ListProduct: React.FC = () => {
   const dispatch = useDispatch<any>();

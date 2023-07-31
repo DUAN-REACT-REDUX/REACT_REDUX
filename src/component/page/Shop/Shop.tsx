@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Get9Product, fetch9Product, fetchProduct } from "../../../actions/product"
+import { Get9Product, fetch9Product } from "../../../actions/product"
 import { Pagination } from "antd"
 
 
@@ -17,6 +17,7 @@ const Shop = () => {
     }
     return (
         <>
+
             <div className="container-fluid bg-secondary mb-5">
                 <div className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: "300px" }}>
                     <h1 className="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
