@@ -21,23 +21,21 @@ const AuthReducer = createSlice({
                 state.user = {};
                 state.isloading = true;
                 state.error = "";
-
             })
-            .addCase(logIn.fulfilled, (state:any, action) => {
+            .addCase(logIn.fulfilled, (state: any, action) => {
                 state.user = action.payload;
-               state.isloading = false;
+                state.isloading = false;
             })
-            .addCase(logIn.rejected, (state:any, action) => {
+            .addCase(logIn.rejected, (state: any, action) => {
                 state.user = null;
                 state.isloading = false;
                 state.error = "";
-            })
-
-
+            });
+        builder
             //signup
             .addCase(Signup.pending, (state) => {
                 state.user = {};
-                state.isloading = false;
+                state.isloading = true;
                 state.error = "";
 
             })
@@ -48,7 +46,7 @@ const AuthReducer = createSlice({
 
 
             })
-            .addCase(Signup.rejected, (state:any, action) => {
+            .addCase(Signup.rejected, (state: any, action) => {
                 state.user = null;
                 state.isloading = false;
                 state.error = "";

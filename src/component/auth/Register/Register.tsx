@@ -1,9 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './css/main.css'
 import './css/util.css'
 import { useState } from 'react';
 import { Signup } from '../../../actions/auth';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { pause } from '../../../utils/pause';
 const Register = () => {
     const [name, setName] = useState<any>();
     const [province, setProvince] = useState<any>('')
@@ -16,6 +20,7 @@ const Register = () => {
     const [confirm, setConfirm] = useState('')
     const dispatch = useDispatch<any>()
     const navigate = useNavigate()
+    const { isloading } = useSelector((state: any) => state.auth)
     const handleSignup = async (e: any) => {
         e.preventDefault();
         await dispatch(Signup({
@@ -30,10 +35,16 @@ const Register = () => {
             confirmpassword: confirm,
             role: ""
         }))
+        toast.success('Đăng ký thành công!', {
+            position: toast.POSITION.TOP_RIGHT,
+            
+        });
+        await pause(1500)
         navigate('/login')
     }
     return (
         <>
+            <ToastContainer />
             <div className="limiter">
                 <div className="container-login100">
                     <div className="wrap-login100">
@@ -78,7 +89,7 @@ const Register = () => {
 
                             <div className="container-login100-form-btn">
                                 <button className="login100-form-btn">
-                                    Register
+                                    {isloading ? "Đang đăng ký..." : "Register"}
                                 </button>
                             </div>
                             <div className="text-center p-t-136">

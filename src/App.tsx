@@ -12,6 +12,7 @@ import ListCategories from "./component/admin/ListCategory/ListCategory";
 import Shop from "./component/page/Shop/Shop";
 import Login from "./component/auth/Login/Login";
 import Register from "./component/auth/Register/Register";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div>

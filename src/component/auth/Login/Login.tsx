@@ -6,14 +6,15 @@ import { logIn } from '../../../actions/auth';
 import { fetchUser } from '../../../actions/user';
 import { useNavigate } from 'react-router-dom';
 import { pause } from '../../../utils/pause';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
     const dispatch = useDispatch<any>()
     const { isloading } = useSelector((state: any) => state.auth)
-
-
     useEffect(() => {
         dispatch(fetchUser())
     }, [])
@@ -26,24 +27,29 @@ const Login = () => {
             
             if (dis.payload.user.role == 'admin') {
                 localStorage.setItem("user", JSON.stringify(dis.payload))
+                toast.success('Đăng nhập thành công Admin!', {
+                    position: toast.POSITION.TOP_RIGHT,
+                });
                 await pause(1000)
                 navigate('/admin')
             }else if (dis.payload.user.role == 'member'){
                 localStorage.setItem("user", JSON.stringify(dis.payload))
+                toast.success('Đăng nhập thành công!', {
+                    position: toast.POSITION.TOP_RIGHT,
+                });
                 await pause(1000)
                 navigate('/')
             }
-
         }
         if (!dis.payload.user) {
-            alert('dang nhap that  bai')
+            toast.error('Đăng nhập thất bại!', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
         }
     }
     return (
-
-
         <>
-            {isloading ? <h1>Loading...</h1> :
+        <ToastContainer/>
                 <div className="limiter"        >
                     <div className="container-login100">
                         <div className="wrap-login100">
@@ -72,7 +78,7 @@ const Login = () => {
                                 </div>
                                 <div className="container-login100-form-btn">
                                     <button className="login100-form-btn">
-                                        Login
+                                    {isloading ? 'Đang đăng nhập...' : 'Login'}
                                     </button>
                                 </div>
                                 <div className="text-center p-t-12">
@@ -93,10 +99,6 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-
-
-            }
-
         </>
     )
 }
