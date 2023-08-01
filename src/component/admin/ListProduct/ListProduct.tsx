@@ -19,6 +19,12 @@ interface DataType {
 }
 
 const ListProduct: React.FC = () => {
+  const accesstoken = JSON.parse(localStorage.getItem("user")!);
+  console.log(accesstoken.accesstoken);
+  // console.log(productId);
+  if (!accesstoken) {
+    throw new Error("Bạn phải đăng nhập để thực hiện xóa!");
+  }
   const dispatch = useDispatch<any>();
   const { products, isloading, error, currentPage } = useSelector(
     (state: any) => state.products
@@ -27,7 +33,7 @@ const ListProduct: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchProduct());
-    dispatch(fetchCat())
+    dispatch(fetchCat());
   }, []);
   // console.log(products);
 
@@ -117,10 +123,9 @@ const ListProduct: React.FC = () => {
       key: "cat_id",
       render: (record: any) => {
         console.log(categories);
-        
+
         const category = categories?.data?.find(
           (item: any) => item.cat_id === record.cat_id
-
         );
         return category ? category.name : "N/A";
       },
@@ -134,7 +139,14 @@ const ListProduct: React.FC = () => {
           <>
             <Button
               danger
-              onClick={() => dispatch(DeleteProduct(id.product_id))}
+              onClick={() =>
+                dispatch(
+                  DeleteProduct({
+                    idproduct: id.product_id,
+                    token: accesstoken.accesstoken,
+                  })
+                )
+              }
             >
               DELETE
             </Button>
