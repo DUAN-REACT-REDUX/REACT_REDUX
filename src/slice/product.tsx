@@ -6,6 +6,7 @@ import {
   GetAllPro,
   fetch9Product,
   fetchProduct,
+  fetchProduct1,
 } from "../actions/product";
 
 const initialState = {
