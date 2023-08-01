@@ -1,6 +1,5 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import ListProduct from "./component/admin/ListProduct/ListProduct";
-
 import Dashbord from "./component/admin/Dashbord/Dashbord";
 import AdminLayout from "./layout/admin";
 import ListUser from "./component/admin/ListUser/ListUser";
@@ -17,11 +16,19 @@ import ProductDetail from "./component/page/ShopDetail/ProductDetail";
 import Checkout from "./component/page/Checkout/Checkout";
 import Cart from "./component/page/Cart/Cart";
 function App() {
+  const requiredAdmin = () => {
+    const user = JSON.parse(localStorage.getItem('user')!)
+    if (user.user.role != "admin") {
+      return <Navigate to='/login' />
+    } else {
+      return <AdminLayout />
+    }
+  }
   return (
     <div>
       <Router>
         <Routes>
-          <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={requiredAdmin()}>
             <Route index element={<Dashbord />} />
             <Route path="product">
               <Route index element={<ListProduct />} />
