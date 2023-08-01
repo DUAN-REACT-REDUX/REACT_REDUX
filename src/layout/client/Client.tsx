@@ -1,9 +1,29 @@
-import { Outlet } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 import './css/style.css'
+import { ToastContainer, toast } from "react-toastify";
+import { pause } from "../../utils/pause";
 // import 'font-awesome/css/font-awesome.min.css';
 const Client = () => {
+    const navigate = useNavigate()
+    const user = JSON.parse(localStorage.getItem('user')!);
+    const isLogin = () => {
+        const accesstoken = user ? user.accesstoken : undefined;
+        if (accesstoken) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    const LogOut = async () => {
+        localStorage.removeItem('user')
+        toast.success('Bạn đã đăng xuất!')
+        await pause(1500)
+        navigate('/')
+    }
     return (
         <>
+            <ToastContainer />
             <div className="container-fluid">
                 <div className="row bg-secondary py-2 px-xl-5">
                     <div className="col-lg-6 d-none d-lg-block">
@@ -90,10 +110,35 @@ const Client = () => {
                                     <a href="detail.html" className="nav-item nav-link">Blog</a>
                                     <a href="contact.html" className="nav-item nav-link">Contact</a>
                                 </div>
-                                <div className="navbar-nav ml-auto py-0">
-                                    <a href="login" className="nav-item nav-link">Login</a>
-                                    <a href="register" className="nav-item nav-link">Register</a>
-                                </div>
+                                {isLogin() ? <><div className="user-info">
+                                    <a
+                                        className="nav-link nav-user-img"
+                                        href="#"
+                                        id="navbarDropdownMenuLink2"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >
+                                        <Link to={'profile'}>
+                                            <img
+                                                src={user?.user?.image}
+                                                alt=""
+                                                className="user-avatar-md rounded-circle"
+
+                                            />
+                                        </Link>
+
+                                    </a>
+                                </div><button className="nav-item nav-link" onClick={() => LogOut()}>
+                                        Logout
+                                    </button></> :
+
+
+                                    <div className="navbar-nav ml-auto py-0">
+                                        <a href="login" className="nav-item nav-link">Login</a>
+                                        <a href="register" className="nav-item nav-link">Register</a>
+                                    </div>}
+
                             </div >
                         </div >
                     </div >

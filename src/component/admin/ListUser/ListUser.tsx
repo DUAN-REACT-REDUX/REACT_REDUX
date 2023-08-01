@@ -78,9 +78,7 @@ const ListUser: React.FC = () => {
             title: 'Name',
             key: 'name',
             render(e: any) {
-                return (
-                    e.name
-                );
+                return <h5>{e.name}</h5>;
             }
         },
         {
@@ -154,7 +152,7 @@ const ListUser: React.FC = () => {
         },
     ]
     return <>
-        <h1>List User</h1>
+        <h1 style={{marginTop:"50px", marginBottom:"50px"}}>List User</h1>
         <div style={{ padding: '16px' }}>
             <Table columns={columns} dataSource={users.data} pagination={false} rowKey="_id" />
         </div>

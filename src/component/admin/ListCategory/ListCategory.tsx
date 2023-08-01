@@ -49,14 +49,15 @@ const ListCategories: React.FC = () => {
             title: "Name",
             key: "name",
             render(e: any) {
-                return e.name;
+                return <h5>{e.name}</h5>;
             },
         },
         {
             title: "Image",
             key: "image",
+            width:"40%",
             render(e: any) {
-                return <img src={e.image} alt="" style={{ width: "10%" }} />;
+                return <img src={e.image} alt="" style={{ width: "30%" }} />;
             },
         },
         {
@@ -80,7 +81,7 @@ const ListCategories: React.FC = () => {
     ];
     return (
         <>
-            <h1>List Categories</h1>
+            <h1 style={{marginTop:"50px", marginBottom:"50px"}}>List Categories</h1>
             <div style={{ padding: "16px" }}>
                 <Table
                     columns={columns}
