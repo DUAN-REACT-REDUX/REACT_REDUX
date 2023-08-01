@@ -78,7 +78,7 @@ const ListProduct: React.FC = () => {
       title: "Name",
       key: "name",
       render(e: any) {
-        return e.name;
+        return <h5>{e.name}</h5>;
       },
     },
     {
@@ -147,7 +147,7 @@ const ListProduct: React.FC = () => {
   ];
   return (
     <>
-      <h1>List Product</h1>
+      <h1 style={{ marginTop: "50px", marginBottom: "50px" }}>List Products</h1>
       <div style={{ padding: "16px" }}>
         <Table
           columns={columns}

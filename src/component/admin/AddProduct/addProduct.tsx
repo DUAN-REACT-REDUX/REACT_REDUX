@@ -73,6 +73,7 @@ const AddProduct: React.FC = () => {
 
   return (
     <>
+      <h1 style={{ marginTop: "50px", marginBottom: "50px" }}>Add Product</h1>
       <Form
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
