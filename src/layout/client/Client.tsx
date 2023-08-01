@@ -1,5 +1,6 @@
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import './css/style.css'
+import './css/style.min.css'
 import { ToastContainer, toast } from "react-toastify";
 import { pause } from "../../utils/pause";
 // import 'font-awesome/css/font-awesome.min.css';

@@ -15,6 +15,7 @@ import Register from "./component/auth/Register/Register";
 import 'react-toastify/dist/ReactToastify.css';
 import ProductDetail from "./component/page/ShopDetail/ProductDetail";
 import Checkout from "./component/page/Checkout/Checkout";
+import Cart from "./component/page/Cart/Cart";
 function App() {
   return (
     <div>
@@ -40,6 +41,7 @@ function App() {
               <Route index element={<Shop />} />
               <Route path=":id" element={<ProductDetail />} />
               <Route path="checkout" element={<Checkout />} />
+              <Route path="cart" element={<Cart />} />
             </Route>
             {/*  <Route path="users">
               <Route index element={<ListUser />} />
