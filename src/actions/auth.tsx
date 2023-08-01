@@ -8,8 +8,6 @@ export const logIn = createAsyncThunk('auth/login', async (userLogin:any) => {
     return data
 });
 export const Signup = createAsyncThunk('auth/signup', async (user:any) => {
-    console.log(user)
-
     await pause(2000)
     const { data } = await instance.post('signup', user)
     console.log(data)
