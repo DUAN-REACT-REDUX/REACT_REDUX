@@ -23,7 +23,7 @@ const Register = () => {
     const { isloading } = useSelector((state: any) => state.auth)
     const handleSignup = async (e: any) => {
         e.preventDefault();
-        await dispatch(Signup({
+        const dis = await dispatch(Signup({
             name,
             email,
             province,
@@ -35,12 +35,21 @@ const Register = () => {
             confirmpassword: confirm,
             role: ""
         }))
-        toast.success('Đăng ký thành công!', {
-            position: toast.POSITION.TOP_RIGHT,
-            
-        });
-        await pause(1500)
-        navigate('/login')
+        console.log(dis);
+
+        if (dis.payload.accesstoken) {
+            toast.success('Đăng ký thành công!', {
+                position: toast.POSITION.TOP_RIGHT,
+
+            });
+            await pause(1500)
+            navigate('/login')
+        } else {
+            toast.error('Đăng ký thất bại!', {
+                position: toast.POSITION.TOP_RIGHT,
+
+            });
+        }
     }
     return (
         <>
