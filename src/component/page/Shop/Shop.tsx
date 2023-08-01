@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Get9Product, fetch9Product } from "../../../actions/product"
 import { Pagination } from "antd"
+import { Link } from "react-router-dom"
 
 
 const Shop = () => {
@@ -11,7 +12,7 @@ const Shop = () => {
         dispatch(fetch9Product())
     }, [])
     console.log(products);
-    const  onTotal= (total:any)=>{
+    const onTotal = (total: any) => {
         console.log(total);
         dispatch(Get9Product(total))
     }
@@ -180,11 +181,11 @@ const Shop = () => {
                                             <div className="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                                 <h6 className="text-truncate mb-3">{data.name}</h6>
                                                 <div className="d-flex justify-content-center">
-                                                    <h6 style={{fontWeight:"bold"}}>${data.price}</h6>
+                                                    <h6 style={{ fontWeight: "bold" }}>${data.price}</h6>
                                                 </div>
                                             </div>
                                             <div className="card-footer d-flex justify-content-between bg-light border">
-                                                <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                                <a className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i><Link to={`/shop/${data.product_id}`}>View Detail</Link></a>
                                                 <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                             </div>
                                         </div>

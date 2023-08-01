@@ -13,6 +13,7 @@ import Shop from "./component/page/Shop/Shop";
 import Login from "./component/auth/Login/Login";
 import Register from "./component/auth/Register/Register";
 import 'react-toastify/dist/ReactToastify.css';
+import ProductDetail from "./component/page/ShopDetail/ProductDetail";
 function App() {
   return (
     <div>
@@ -36,7 +37,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="shop">
               <Route index element={<Shop />} />
-              {/* <Route path="add" element={<AddProduct />} /> */}
+              <Route path=":id" element={<ProductDetail />} />
             </Route>
             {/*  <Route path="users">
               <Route index element={<ListUser />} />
