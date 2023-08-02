@@ -28,7 +28,7 @@ export const getAllCategory = createAsyncThunk(
 //         dispatch({ type: "cat/getonesuccess" })
 //     }
 // }
-export const getOneCat=createAsyncThunk("categories/getone",async(id:any)=>{
+export const getOneCat = createAsyncThunk("categories/getone", async (id: any) => {
     const { data } = await instance.get(`categories/${id}`)
     return data.data
 })
@@ -44,10 +44,18 @@ export const AddCategory = createAsyncThunk(
 );
 export const DeleteCategory = createAsyncThunk(
     "categories/delete",
-    async (catId: any) => {
-        const data = await instance.delete(
-            `/categories/${catId}`,
-        );
-        return data;
+    async (data: any) => {
+        console.log(data);
+
+        try {
+            await instance.delete(`/categories/${data.idcat}`, {
+                headers: {
+                    Authorization: `Bearer ${data.token}`,
+                },
+            });
+            return data.idcat;
+        } catch (error) {
+            console.log(error);
+        }
     }
-)
+);

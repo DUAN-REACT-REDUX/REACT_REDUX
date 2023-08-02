@@ -8,7 +8,6 @@ const initialState = {
     isloadingCat: false,
     errorCat: "",
     currentPage: 1,
-    totalPages: 0,
 };
 
 const CategoryReducer = createSlice({
@@ -27,29 +26,24 @@ const CategoryReducer = createSlice({
                 state.categories = action.payload
             })
 
-
-        // builder
-        //     .addCase(getAllCategory.pending, (state) => {
-        //         state.isloadingCat = true;
-        //     })
-        // builder.addCase(getAllCategory.fulfilled, (state, action) => {
-        //     state.isloadingCat = false;
-        //     state.categories = action.payload.data;
-        //     state.currentPage = action.payload.currentPage;
-        //     state.totalPages = action.payload.totalPages;
-        // });
-
+        builder
+            .addCase(getAllCategory.pending, (state) => {
+                state.isloadingCat = true;
+            })
+            .addCase(getAllCategory.fulfilled, (state, action) => {
+                console.log(action);
+                state.isloadingCat = false;
+                state.currentPage = action.payload.total;
+                state.categories = action.payload.data;
+            });
         builder.addCase(AddCategory.fulfilled, (state: any, action) => {
             state.categories.push(action.payload);
         });
         builder.addCase(DeleteCategory.fulfilled, (state: any, action) => {
-            console.log(action.payload);
-
-            state.category.data = state.category?.data.filter(
-                (category: any) => category.cat_id != action.payload
+            state.categories.data = state.categories?.data.filter(
+                (categories: any) => categories.cat_id !== action.payload
             );
-
-        })
+        });
     },
 });
 
