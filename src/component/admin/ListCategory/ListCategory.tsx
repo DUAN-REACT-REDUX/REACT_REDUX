@@ -2,23 +2,34 @@ import React, { useEffect } from "react";
 import { Table, Button, Pagination } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useDispatch, useSelector } from "react-redux";
+import {
+    DeleteCategory,
+    getAllCategory,
+    fetchCat,
+} from "../../../actions/category";
 
-import { DeleteCategory, fetchCat, getAllCategory, getOneCat } from "../../../actions/category";
 interface DataType {
     key: string;
     name: string;
     image: string;
-
+    tags: string[];
 }
-let dispatched = false;
 
 const ListCategories: React.FC = () => {
+    const accesstoken = JSON.parse(localStorage.getItem("user")!);
+    console.log(accesstoken.accesstoken);
+    if (!accesstoken) {
+        throw new Error("Bạn phải đăng nhập để thực hiện xóa!");
+    }
     const dispatch = useDispatch<any>();
-    const { categories, isloading, error, currentPage } = useSelector((state: any) => state.category);
+    const { categories, isloading, error, currentPage } = useSelector(
+        (state: any) => state.category
+    );
 
     useEffect(() => {
         dispatch(fetchCat());
     }, []);
+
     if (isloading) {
         return (
             <div className="loader" style={{ marginTop: "150px" }}>
@@ -40,9 +51,10 @@ const ListCategories: React.FC = () => {
     if (error) {
         return <h2>{error}</h2>;
     }
-    // const onTotal = (page: number) => {
-    //     dispatch(getAllCategory(page));
-    // };
+    const onTotal = (total: any) => {
+        console.log(total);
+        dispatch(getAllCategory(total));
+    };
 
     const columns: ColumnsType<DataType> = [
         {
@@ -55,11 +67,14 @@ const ListCategories: React.FC = () => {
         {
             title: "Image",
             key: "image",
-            width:"40%",
+            width: "20%",
             render(e: any) {
-                return <img src={e.image} alt="" style={{ width: "30%" }} />;
+                return <img src={e.image} alt="" style={{ width: "40%" }} />;
+                // return e.image;
             },
         },
+
+
         {
             title: "Action",
             key: "action",
@@ -68,7 +83,14 @@ const ListCategories: React.FC = () => {
                     <>
                         <Button
                             danger
-                            onClick={() => dispatch(DeleteCategory(id.cat_id))}
+                            onClick={() =>
+                                dispatch(
+                                    DeleteCategory({
+                                        idcat: id.cat_id,
+                                        token: accesstoken.accesstoken,
+                                    })
+                                )
+                            }
                         >
                             DELETE
                         </Button>
@@ -81,7 +103,7 @@ const ListCategories: React.FC = () => {
     ];
     return (
         <>
-            <h1 style={{marginTop:"50px", marginBottom:"50px"}}>List Categories</h1>
+            <h1 style={{ marginTop: "50px", marginBottom: "50px" }}>List Categories</h1>
             <div style={{ padding: "16px" }}>
                 <Table
                     columns={columns}
@@ -90,12 +112,12 @@ const ListCategories: React.FC = () => {
                     rowKey="_id"
                 />
             </div>
-            {/* <Pagination
+            <Pagination
                 pageSize={1}
                 total={categories.totalPages}
                 current={currentPage}
                 onChange={(page) => onTotal(page)}
-            /> */}
+            />
         </>
     );
 };
