@@ -59,3 +59,13 @@ export const DeleteCategory = createAsyncThunk(
         }
     }
 );
+export const GetproductByCategory = createAsyncThunk(
+    "categories",
+    async (id: any) => {
+        // await pause(500)
+        const {data} = await instance.get(
+            `/categories/${id}/product`
+        );
+        return data.products;
+    }
+);

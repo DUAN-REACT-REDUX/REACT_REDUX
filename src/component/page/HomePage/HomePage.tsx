@@ -88,7 +88,7 @@ const HomePage = () => {
                                     <div className="col-lg-4 col-md-6 pb-1" key={item.cat_id}>
                                         <div className="cat-item d-flex flex-column border mb-4" style={{ padding: "30px" }}>
                                             <p className="text-right">12</p>
-                                            <a href="" className="cat-img position-relative overflow-hidden mb-3">
+                                            <a href={`/category/${item.cat_id}/product`} className="cat-img position-relative overflow-hidden mb-3">
                                                 <img className="img-fluid" src={item.image} alt="" />
                                             </a>
                                             <h5 className="font-weight-semi-bold m-0">{item.name}</h5>

@@ -15,10 +15,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import ProductDetail from "./component/page/ShopDetail/ProductDetail";
 import Checkout from "./component/page/Checkout/Checkout";
 import Cart from "./component/page/Cart/Cart";
+import ShopByCat from "./component/page/ShopByCategory/ShopByCat";
 function App() {
   const requiredAdmin = () => {
     const user = JSON.parse(localStorage.getItem('user')!)
-    if (user.user.role != "admin") {
+    if (!user || user.user.role !== 'admin') {
       return <Navigate to='/login' />
     } else {
       return <AdminLayout />
@@ -50,9 +51,9 @@ function App() {
               <Route path="checkout" element={<Checkout />} />
               <Route path="cart" element={<Cart />} />
             </Route>
-            {/*  <Route path="users">
-              <Route index element={<ListUser />} />
-            </Route> */}
+            <Route path="category">
+              <Route path=":id/product" element={<ShopByCat />} />
+            </Route>
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
