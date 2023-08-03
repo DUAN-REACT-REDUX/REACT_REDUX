@@ -8,6 +8,7 @@ import {
   fetchProduct,
   fetchProduct1,
 } from "../actions/product";
+import { GetproductByCategory } from "../actions/category";
 
 const initialState = {
   products: [],
@@ -60,6 +61,11 @@ const ProductReducer = createSlice({
 
       state.products = action.payload.data;
       state.currentPage = action.payload.total;
+    });
+    builder.addCase(GetproductByCategory.fulfilled, (state: any, action) => {
+      console.log(state.products);
+      console.log(action.payload);
+      state.products= action.payload
     });
   },
 });
