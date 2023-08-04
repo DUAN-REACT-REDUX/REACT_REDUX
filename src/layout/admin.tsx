@@ -437,8 +437,14 @@ const AdminLayout: React.FC = () => {
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a className="nav-link" href="pages/carousel.html">
-                            Carousel
+                          <a className="nav-link">
+                            <Link
+                              to="product/update"
+                              style={{ textDecoration: "none", color: "white" }}
+                            >
+                              Update Products{" "}
+                            </Link>
+                            <span className="badge badge-secondary">New</span>
                           </a>
                         </li>
                         <li className="nav-item">
