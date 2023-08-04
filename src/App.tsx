@@ -17,13 +17,13 @@ import Checkout from "./component/page/Checkout/Checkout";
 import Cart from "./component/page/Cart/Cart";
 import ShopByCat from "./component/page/ShopByCategory/ShopByCat";
 function App() {
+  const user = JSON.parse(localStorage.getItem('user')!)
   const requiredAdmin = () => {
-    const user = JSON.parse(localStorage.getItem('user')!)
-    if (!user || user.user.role !== 'admin') {
-      return <Navigate to='/login' />
-    } else {
-      return <AdminLayout />
+    if (!user || user.user.role == 'admin') {
+      return <AdminLayout />;
     }
+    return <Navigate to='/' />
+
   }
   return (
     <div>
