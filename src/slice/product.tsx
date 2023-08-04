@@ -4,6 +4,8 @@ import {
   DeleteProduct,
   Get9Product,
   GetAllPro,
+  GetOneProduct,
+  UpdateProductAction,
   fetch9Product,
   fetchProduct,
   fetchProduct1,
@@ -44,6 +46,13 @@ const ProductReducer = createSlice({
     builder.addCase(AddProductAction.fulfilled, (state: any, action) => {
       state.products.push(action.payload);
     });
+
+    builder.addCase(UpdateProductAction.fulfilled, (state: any, action) => {
+      state.products.data = state.products?.data.map((product: any) =>
+        product.id === action.payload.id ? action.payload : product
+      );
+    });
+
     builder.addCase(DeleteProduct.fulfilled, (state: any, action) => {
       state.products.data = state.products?.data.filter(
         (product: any) => product.product_id !== action.payload
@@ -65,7 +74,11 @@ const ProductReducer = createSlice({
     builder.addCase(GetproductByCategory.fulfilled, (state: any, action) => {
       console.log(state.products);
       console.log(action.payload);
-      state.products= action.payload
+      state.products = action.payload;
+    });
+    builder.addCase(GetOneProduct.fulfilled, (state, action) => {
+      console.log(action);
+      state.products = action.payload.data;
     });
   },
 });

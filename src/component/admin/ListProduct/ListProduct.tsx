@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   DeleteProduct,
   GetAllPro,
+  UpdateProductAction,
   fetchProduct,
 } from "../../../actions/product";
 import "./loadingfetch.css";
 import "./custom-table.css";
 import { fetchCat } from "../../../actions/category";
+import { Link } from "react-router-dom";
 interface DataType {
   key: string;
   name: string;
@@ -151,7 +153,9 @@ const ListProduct: React.FC = () => {
               DELETE
             </Button>
             <span> </span>
-            <Button>UPDATE</Button>
+            <Button>
+              <Link to={`${id.product_id}/update`}>Update</Link>
+            </Button>
           </>
         );
       },

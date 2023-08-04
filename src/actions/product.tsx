@@ -11,9 +11,7 @@ export const fetchProduct = createAsyncThunk("products/fetch", async () => {
 });
 export const fetchProduct1 = createAsyncThunk("products/fetch", async () => {
   await pause(2000);
-  const { data } = await instance.get(
-    "products?_sort=price"
-  );
+  const { data } = await instance.get("products?_sort=price");
   return data;
 });
 export const fetch9Product = createAsyncThunk("products/fetch9", async () => {
@@ -54,6 +52,23 @@ export const AddProductAction = createAsyncThunk(
     return data;
   }
 );
+export const UpdateProductAction = createAsyncThunk(
+  "products/update",
+  async (product: any) => {
+    try {
+      console.log(product);
+      const { data } = await instance.put(
+        `/products/${product.id}/update`,
+        product
+      );
+      return data;
+    } catch (error) {
+      console.error("Lỗi khi cập nhật sản phẩm:", error);
+      throw error;
+    }
+  }
+);
+
 export const DeleteProduct = createAsyncThunk(
   "products/delete",
   async (data: any) => {
@@ -73,3 +88,8 @@ export const DeleteProduct = createAsyncThunk(
     // return productId;
   }
 );
+export const GetOneProduct = createAsyncThunk("products", async (id: any) => {
+  const { data } = await instance.get(`products/${id}`);
+  console.log(data);
+  return data;
+});
