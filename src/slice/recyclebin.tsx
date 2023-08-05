@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchRecycle, getProductsFromRecyclebin } from "../actions/recyclebin";
+import { RemoveRecyclebin, fetchRecycle, getProductsFromRecyclebin } from "../actions/recyclebin";
 
 const initialState = {
     recyclebin: [],
@@ -21,9 +21,12 @@ const RecyclebinReducer = createSlice({
             .addCase(fetchRecycle.fulfilled, (state, action) => {
                 console.log(action);
                 state.isloading = false
-                state.recyclebin = action.payload
+                state.recyclebin = action.payload.data
             })
-
+        builder.addCase(RemoveRecyclebin.fulfilled, (state, action) => {
+            console.log(state.recyclebin);
+            state.recyclebin = state?.recyclebin?.filter((c: any) => c.id !== action.payload)
+        });
         builder
             .addCase(getProductsFromRecyclebin.pending, (state) => {
                 state.isloading = true;
@@ -33,7 +36,11 @@ const RecyclebinReducer = createSlice({
                 state.isloading = false;
                 state.currentPage = action.payload.total;
                 state.recyclebin = action.payload.data;
+                console.log(state.recyclebin);
+
             });
+
+
     }
 })
 

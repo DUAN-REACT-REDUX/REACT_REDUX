@@ -89,6 +89,7 @@ const ProductReducer = createSlice({
       console.log(action);
       state.products = action.payload.data;
     });
+    
   },
 });
 
