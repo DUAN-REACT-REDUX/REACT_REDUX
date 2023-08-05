@@ -28,10 +28,11 @@ import UpdateCategory from "./component/admin/UpdateCat/updateCategory";
 function App() {
   const user = JSON.parse(localStorage.getItem("user")!);
   const requiredAdmin = () => {
-    if (!user || user.user.role !== "admin") {
-      return <Navigate to="/login" />;
-    } else {
+    if (!user || user.user.role == "admin") {
       return <AdminLayout />;
+    } else {
+      return <Navigate to="/login" />;
+
     }
   };
   return (
