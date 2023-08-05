@@ -13,7 +13,7 @@ export const Fetch6ProductNew = createAsyncThunk(
   "sixproducts/fetch",
   async () => {
     await pause(2000);
-    const { data } = await instance.get("sixproducts?_limit=6&_page=1");
+    const { data } = await instance.get("sixproducts?_limit=8&_page=1");
     return data;
   }
 );
