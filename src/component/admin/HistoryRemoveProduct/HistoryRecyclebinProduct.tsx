@@ -9,8 +9,11 @@ import {
 import "./loadingfetch.css";
 import "./custom-table.css";
 import { fetchCat } from "../../../actions/category";
-import { fetchRecycle, getProductsFromRecyclebin } from "../../../actions/recyclebin";
+import { RestoreProduct, fetchRecycle, getProductsFromRecyclebin } from "../../../actions/recyclebin";
 import { fetchUser } from "../../../actions/user";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { pause } from "../../../utils/pause";
 interface ProductType {
   key: string;
 
@@ -27,15 +30,12 @@ interface ProductType {
   }
   time: string;
 }
-
-
 const HistoryRemove: React.FC = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch<any>();
   const { recyclebin, isloading, error, currentPage } = useSelector((state: any) => state.recyclebin);
   const { products } = useSelector((state: any) => state.products);
-
   const { categories } = useSelector((state: any) => state.category);
-
   const { users } = useSelector((state: any) => state.users)
 
   useEffect(() => {
@@ -92,7 +92,14 @@ const HistoryRemove: React.FC = () => {
   // console.log("products:", products); // Log products data
   // console.log("categories:", categories);
   // console.log("users:", users); // Log users data
-
+  const handeRestore = async (id: any) => {
+    await dispatch(RestoreProduct(id))
+    toast.success('Khôi phục sản phẩm thành công!', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+    await pause(1000)
+    navigate('/admin/product')
+  }
 
   const columns: ColumnsType<ProductType> = [
     {
@@ -140,11 +147,32 @@ const HistoryRemove: React.FC = () => {
       key: "time",
       render: (product: ProductType) => <h5>{product.time}</h5>,
     },
+    {
+      title: "Action",
+      key: "action",
+      render: (id: any) => {
+        return (
+          <>
+            <Button
+              danger
+              onClick={() => handeRestore(id.id)}
+            >
+              RESTORE
+            </Button>
+            <span> </span>
+            <Button>
+              DELETE
+            </Button>
+          </>
+        );
+      },
+    },
     // ... Other columns ...
   ];
 
   return (
     <>
+      <ToastContainer />
       <h1 style={{ marginTop: "50px", marginBottom: "50px" }}> Recycle Bin</h1>
       {/* Display Recently Deleted Product */}
       <Table

@@ -20,3 +20,14 @@ export const getProductsFromRecyclebin = createAsyncThunk(
         return data.idrecycle;
     }
 );
+export const RestoreProduct = createAsyncThunk(
+    "Restore",
+    async (id: any) => {
+        console.log(id);
+        
+        const data = await instance.get(`/recyclebin/${id}`); // Corrected the API endpoint to include the page number
+        console.log(data);
+        
+        return 
+    }
+);
