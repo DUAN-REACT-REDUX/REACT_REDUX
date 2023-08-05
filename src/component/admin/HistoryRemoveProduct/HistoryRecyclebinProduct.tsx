@@ -9,7 +9,7 @@ import {
 import "./loadingfetch.css";
 import "./custom-table.css";
 import { fetchCat } from "../../../actions/category";
-import { RestoreProduct, fetchRecycle, getProductsFromRecyclebin } from "../../../actions/recyclebin";
+import { RemoveRecyclebin, RestoreProduct, fetchRecycle, getProductsFromRecyclebin } from "../../../actions/recyclebin";
 import { fetchUser } from "../../../actions/user";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -100,6 +100,17 @@ const HistoryRemove: React.FC = () => {
     await pause(1000)
     navigate('/admin/product')
   }
+  const handleRemove = async (id: any) => {
+   
+    const check = confirm('Are you sure you want to remove this product in recyclebin?')
+    if (check == true) {
+      await dispatch(RemoveRecyclebin(id))
+      toast.success('Xóa sản phẩm trong thùng rác thành công!', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+
+  }
 
   const columns: ColumnsType<ProductType> = [
     {
@@ -154,13 +165,13 @@ const HistoryRemove: React.FC = () => {
         return (
           <>
             <Button
-              danger
+
               onClick={() => handeRestore(id.id)}
             >
               RESTORE
             </Button>
             <span> </span>
-            <Button>
+            <Button danger onClick={() => handleRemove(id.id)}>
               DELETE
             </Button>
           </>
@@ -177,7 +188,7 @@ const HistoryRemove: React.FC = () => {
       {/* Display Recently Deleted Product */}
       <Table
         columns={columns}
-        dataSource={recyclebin.data}
+        dataSource={recyclebin}
 
         pagination={false}
         rowKey="_id"
