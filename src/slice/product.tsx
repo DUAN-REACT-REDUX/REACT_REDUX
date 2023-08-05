@@ -9,6 +9,7 @@ import {
   fetch9Product,
   fetchProduct,
   fetchProduct1,
+  Fetch6ProductNew
 } from "../actions/product";
 import { GetproductByCategory } from "../actions/category";
 
@@ -74,12 +75,9 @@ const ProductReducer = createSlice({
     builder.addCase(GetproductByCategory.fulfilled, (state: any, action) => {
       console.log(state.products);
       console.log(action.payload);
-      state.products = action.payload;
+      state.products = action.payload
     });
-    builder.addCase(GetOneProduct.fulfilled, (state, action) => {
-      console.log(action);
-      state.products = action.payload.data;
-    });
+   
   },
 });
 
