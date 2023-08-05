@@ -24,6 +24,7 @@ import ShopByCat from "./component/page/ShopByCategory/ShopByCat";
 
 import UpdateProduct from "./component/admin/UpdateProduct/updateProduct";
 import HistoryRemove from "./component/admin/HistoryRemoveProduct/HistoryRecyclebinProduct";
+import UpdateCategory from "./component/admin/UpdateCat/updateCategory";
 function App() {
   const user = JSON.parse(localStorage.getItem("user")!);
   const requiredAdmin = () => {
@@ -53,6 +54,8 @@ function App() {
             <Route path="categories">
               <Route index element={<ListCategories />} />
               <Route path="add" element={<AddCat />} />
+              <Route path=":id/update" element={<UpdateCategory />} />
+
             </Route>
           </Route>
           <Route path="/" element={<Client />}>
