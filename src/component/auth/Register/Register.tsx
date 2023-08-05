@@ -16,6 +16,7 @@ const Register = () => {
     const [address, setAddress] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [nameError, setNameError] = useState('');
     const [image, setImage] = useState('')
     const [confirm, setConfirm] = useState('')
     const dispatch = useDispatch<any>()
@@ -23,6 +24,38 @@ const Register = () => {
     const { isloading } = useSelector((state: any) => state.auth)
     const handleSignup = async (e: any) => {
         e.preventDefault();
+
+        // name
+        if (!name) {
+            toast.error('Vui lòng nhập tên!', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+            return;
+        }
+
+        // email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailPattern.test(email)) {
+            toast.error('Vui lòng nhập email hợp lệ!', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+            return;
+        }
+
+        //mat khau
+        if (!password || password.length < 6) {
+            toast.error('Mật khẩu phải có ít nhất 6 ký tự!', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+            return;
+        }
+        // xac nhan mat khau
+        if (password !== confirm) {
+            toast.error('Xác nhận mật khẩu không khớp!', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+            return;
+        }
         const dis = await dispatch(Signup({
             name,
             email,
@@ -72,6 +105,7 @@ const Register = () => {
                                     <i className="fa fa-user" aria-hidden="true"></i>
                                 </span>
                             </div>
+                            {nameError && <p style={{ color: 'red' }}>{nameError}</p>}
                             <div className="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                                 <input className="input100" type="text" name="email" placeholder="Email" value={email}
                                     onChange={(e) => setEmail(e.target.value)} />
@@ -80,6 +114,7 @@ const Register = () => {
                                     <i className="fa fa-envelope" aria-hidden="true"></i>
                                 </span>
                             </div>
+                            {nameError && <p style={{ color: 'red' }}>{nameError}</p>}
                             <div className="wrap-input100 validate-input" data-validate="Password is required">
                                 <input className="input100" type="password" name="pass" placeholder="Password" value={password}
                                     onChange={(e) => setPassword(e.target.value)} />
@@ -88,6 +123,7 @@ const Register = () => {
                                     <i className="fa fa-lock" aria-hidden="true"></i>
                                 </span>
                             </div>
+                            {nameError && <p style={{ color: 'red' }}>{nameError}</p>}
                             <div className="wrap-input100 validate-input" data-validate="Password is required">
                                 <input className="input100" type="password" name="pass" placeholder="Confirm Password" onChange={(e: any) => setConfirm(e.target.value)} />
                                 <span className="focus-input100"></span>
@@ -95,7 +131,7 @@ const Register = () => {
                                     <i className="fa fa-lock" aria-hidden="true"></i>
                                 </span>
                             </div>
-
+                            {nameError && <p style={{ color: 'red' }}>{nameError}</p>}
                             <div className="container-login100-form-btn">
                                 <button className="login100-form-btn">
                                     {isloading ? "Đang đăng ký..." : "Register"}
