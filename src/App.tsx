@@ -26,9 +26,8 @@ import UpdateProduct from "./component/admin/UpdateProduct/updateProduct";
 import HistoryRemove from "./component/admin/HistoryRemoveProduct/HistoryRecyclebinProduct";
 import UpdateCategory from "./component/admin/UpdateCat/updateCategory";
 function App() {
-  // const user = JSON.parse(localStorage.getItem("user")!);
+  const user = JSON.parse(localStorage.getItem("user")!);
   const requiredAdmin = () => {
-    const user = JSON.parse(localStorage.getItem("user")!);
     if (!user || user.user.role !== "admin") {
       return <Navigate to="/login" />;
     } else {
