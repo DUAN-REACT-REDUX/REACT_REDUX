@@ -23,6 +23,7 @@ interface ProductType {
     quantity: number;
     description: string;
     color: string;
+    image: string;
     cat_id: string;
   }
   user_info: {
@@ -34,9 +35,9 @@ const HistoryRemove: React.FC = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch<any>();
   const { recyclebin, isloading, error, currentPage } = useSelector((state: any) => state.recyclebin);
-  const { products } = useSelector((state: any) => state.products);
+  // const { products } = useSelector((state: any) => state.products);
   const { categories } = useSelector((state: any) => state.category);
-  const { users } = useSelector((state: any) => state.users)
+  // const { users } = useSelector((state: any) => state.users)
 
   useEffect(() => {
     dispatch(fetchRecycle());
@@ -75,6 +76,9 @@ const HistoryRemove: React.FC = () => {
         <div className="box box8">
           <div></div>
         </div>
+        <div className="box box9">
+          <div></div>
+        </div>
         <div className="ground">
           <div></div>
         </div>
@@ -101,7 +105,7 @@ const HistoryRemove: React.FC = () => {
     navigate('/admin/product')
   }
   const handleRemove = async (id: any) => {
-   
+
     const check = confirm('Are you sure you want to remove this product in recyclebin?')
     if (check == true) {
       await dispatch(RemoveRecyclebin(id))
@@ -137,6 +141,17 @@ const HistoryRemove: React.FC = () => {
       title: "Quantily",
       key: "quantity",
       render: (product: ProductType) => product.product.quantity,
+    },
+    {
+      title: "Image",
+      key: "image",
+      render: (product: ProductType) => (
+        <img
+          src={product.product.image} // Assuming the image URL is stored in the "image" field
+          alt={product.product.name}
+          style={{ width: "100px", height: "auto" }}
+        />
+      ),
     },
     {
       title: "Category",
