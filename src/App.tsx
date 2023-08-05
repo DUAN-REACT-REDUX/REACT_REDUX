@@ -21,6 +21,7 @@ import ProductDetail from "./component/page/ShopDetail/ProductDetail";
 import Checkout from "./component/page/Checkout/Checkout";
 import Cart from "./component/page/Cart/Cart";
 import ShopByCat from "./component/page/ShopByCategory/ShopByCat";
+
 import UpdateProduct from "./component/admin/UpdateProduct/updateProduct";
 function App() {
   const user = JSON.parse(localStorage.getItem("user")!);
@@ -41,6 +42,7 @@ function App() {
             <Route path="product">
               <Route index element={<ListProduct />} />
               <Route path="add" element={<AddProduct />} />
+
               <Route path=":id/update" element={<UpdateProduct />} />
             </Route>
             <Route path="users">

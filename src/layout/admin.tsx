@@ -437,6 +437,7 @@ const AdminLayout: React.FC = () => {
                           </a>
                         </li>
                         <li className="nav-item">
+
                           <a className="nav-link">
                             <Link
                               to="product/update"
