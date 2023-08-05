@@ -63,9 +63,25 @@ export const GetproductByCategory = createAsyncThunk(
     "categories",
     async (id: any) => {
         // await pause(500)
-        const {data} = await instance.get(
+        const { data } = await instance.get(
             `/categories/${id}/product`
         );
         return data.products;
+    }
+);
+export const UpdateCategoriesAction = createAsyncThunk(
+    "categories/update",
+    async (categories: any) => {
+        try {
+            console.log(categories);
+            const { data } = await instance.put(
+                `/categories/${categories.id}/update`,
+                categories
+            );
+            return data;
+        } catch (error) {
+            console.error("Lỗi khi cập nhật sản phẩm:", error);
+            throw error;
+        }
     }
 );

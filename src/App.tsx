@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import ListProduct from "./component/admin/ListProduct/ListProduct";
 import Dashbord from "./component/admin/Dashbord/Dashbord";
 import AdminLayout from "./layout/admin";
@@ -11,20 +16,25 @@ import ListCategories from "./component/admin/ListCategory/ListCategory";
 import Shop from "./component/page/Shop/Shop";
 import Login from "./component/auth/Login/Login";
 import Register from "./component/auth/Register/Register";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import ProductDetail from "./component/page/ShopDetail/ProductDetail";
 import Checkout from "./component/page/Checkout/Checkout";
 import Cart from "./component/page/Cart/Cart";
 import ShopByCat from "./component/page/ShopByCategory/ShopByCat";
+
+import UpdateProduct from "./component/admin/UpdateProduct/updateProduct";
+import HistoryRemove from "./component/admin/HistoryRemoveProduct/HistoryRecyclebinProduct";
+import UpdateCategory from "./component/admin/UpdateCat/updateCategory";
 function App() {
-  const user = JSON.parse(localStorage.getItem('user')!)
+  // const user = JSON.parse(localStorage.getItem("user")!);
   const requiredAdmin = () => {
-    if (!user || user.user.role == 'admin') {
+    const user = JSON.parse(localStorage.getItem("user")!);
+    if (!user || user.user.role !== "admin") {
+      return <Navigate to="/login" />;
+    } else {
       return <AdminLayout />;
     }
-    return <Navigate to='/' />
-
-  }
+  };
   return (
     <div>
       <Router>
@@ -34,6 +44,9 @@ function App() {
             <Route path="product">
               <Route index element={<ListProduct />} />
               <Route path="add" element={<AddProduct />} />
+              <Route path="historyremove" element={<HistoryRemove />} />
+
+              <Route path=":id/update" element={<UpdateProduct />} />
             </Route>
             <Route path="users">
               <Route index element={<ListUser />} />
@@ -41,6 +54,7 @@ function App() {
             <Route path="categories">
               <Route index element={<ListCategories />} />
               <Route path="add" element={<AddCat />} />
+              <Route path=":id/update" element={<UpdateCategory />} />
             </Route>
           </Route>
           <Route path="/" element={<Client />}>
