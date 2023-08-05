@@ -26,7 +26,7 @@ import UpdateProduct from "./component/admin/UpdateProduct/updateProduct";
 import HistoryRemove from "./component/admin/HistoryRemoveProduct/HistoryRecyclebinProduct";
 import UpdateCategory from "./component/admin/UpdateCat/updateCategory";
 function App() {
-  const user = JSON.parse(localStorage.getItem("user")!);
+  // const user = JSON.parse(localStorage.getItem("user")!);
   const requiredAdmin = () => {
     const user = JSON.parse(localStorage.getItem("user")!);
     if (!user || user.user.role !== "admin") {
@@ -55,7 +55,6 @@ function App() {
               <Route index element={<ListCategories />} />
               <Route path="add" element={<AddCat />} />
               <Route path=":id/update" element={<UpdateCategory />} />
-
             </Route>
           </Route>
           <Route path="/" element={<Client />}>
