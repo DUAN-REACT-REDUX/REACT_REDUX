@@ -451,7 +451,7 @@ const AdminLayout: React.FC = () => {
                         <li className="nav-item">
                           <Link
                             to="product/historyremove"
-                            style={{ textDecoration: "none", color: "white" }}
+                            style={{ textDecoration: "none", color: "white", marginLeft: "12px" }}
                           >
                             History Remove{" "}
                           </Link>
