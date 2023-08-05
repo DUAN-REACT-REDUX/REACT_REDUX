@@ -437,9 +437,12 @@ const AdminLayout: React.FC = () => {
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a className="nav-link" href="pages/carousel.html">
-                            Carousel
-                          </a>
+                          <Link
+                            to="product/historyremove"
+                            style={{ textDecoration: "none", color: "white" }}
+                          >
+                            History Remove Products{" "}
+                          </Link>
                         </li>
                         <li className="nav-item">
                           <a className="nav-link" href="pages/listgroup.html">

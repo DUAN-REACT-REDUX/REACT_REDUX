@@ -16,6 +16,7 @@ import ProductDetail from "./component/page/ShopDetail/ProductDetail";
 import Checkout from "./component/page/Checkout/Checkout";
 import Cart from "./component/page/Cart/Cart";
 import ShopByCat from "./component/page/ShopByCategory/ShopByCat";
+import HistoryRemove from "./component/admin/HistoryRemoveProduct/HistoryRecyclebinProduct";
 function App() {
   const user = JSON.parse(localStorage.getItem('user')!)
   const requiredAdmin = () => {
@@ -34,6 +35,7 @@ function App() {
             <Route path="product">
               <Route index element={<ListProduct />} />
               <Route path="add" element={<AddProduct />} />
+              <Route path="historyremove" element={<HistoryRemove />} />
             </Route>
             <Route path="users">
               <Route index element={<ListUser />} />
