@@ -7,6 +7,7 @@ import {
     getAllCategory,
     fetchCat,
 } from "../../../actions/category";
+import { Link } from "react-router-dom";
 
 interface DataType {
     key: string;
@@ -95,7 +96,9 @@ const ListCategories: React.FC = () => {
                             DELETE
                         </Button>
                         <span> </span>
-                        <Button>UPDATE</Button>
+                        <Button>
+                            <Link to={`${id.cat_id}/update`}>Update</Link>
+                        </Button>
                     </>
                 );
             },
