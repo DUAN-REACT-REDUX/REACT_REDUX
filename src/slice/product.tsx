@@ -8,7 +8,6 @@ import {
   UpdateProductAction,
   fetch9Product,
   fetchProduct,
-  fetchProduct1,
   Fetch6ProductNew
 } from "../actions/product";
 import { GetproductByCategory } from "../actions/category";
@@ -77,7 +76,19 @@ const ProductReducer = createSlice({
       console.log(action.payload);
       state.products = action.payload
     });
-   
+    //new 6 product
+    builder.addCase(Fetch6ProductNew.fulfilled, (state, action) => {
+      state.products = action.payload;
+      console.log(action)
+    });
+    builder.addCase(Fetch6ProductNew.rejected, (state: any, action) => {
+      console.log(action.error.message);
+      state.products = action.payload;
+    });
+    builder.addCase(GetOneProduct.fulfilled, (state, action) => {
+      console.log(action);
+      state.products = action.payload.data;
+    });
   },
 });
 
