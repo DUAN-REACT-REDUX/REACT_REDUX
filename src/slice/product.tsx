@@ -8,7 +8,6 @@ import {
   UpdateProductAction,
   fetch9Product,
   fetchProduct,
-  fetchProduct1,
   Fetch6ProductNew
 } from "../actions/product";
 import { GetproductByCategory } from "../actions/category";
