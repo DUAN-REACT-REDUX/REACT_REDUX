@@ -19,6 +19,7 @@ const UpdateCategory = () => {
     const [form] = Form.useForm();
     const [name, setname] = useState([]);
     const [image, setimage] = useState("");
+    const [nameError, setNameError] = useState<string>("");
     const dispatch = useDispatch<any>();
     const navigate = useNavigate();
     const { id } = useParams();
@@ -57,10 +58,14 @@ const UpdateCategory = () => {
         setimage(response.data.secure_url);
     };
     //
-    if (image) {
-        alert("done");
-    }
+    // if (image) {
+    //     alert("done");
+    // }
     const handleUpdate = () => {
+        if (!name) {
+            setNameError("Bạn chưa nhập tên danh mục");
+            return;
+        }
         dispatch(
             UpdateCategoriesAction({
                 id: id,
@@ -90,8 +95,17 @@ const UpdateCategory = () => {
                     )
                 }
             >
-                <Form.Item label="Name " name="name">
-                    <Input onChange={(e: any) => setname(e.target.value)} />
+                <Form.Item
+                    label="Name Category"
+                    validateStatus={nameError ? "error" : ""}
+                    help={nameError}
+                >
+                    <Input
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            setname(e.target.value);
+                            setNameError("");
+                        }}
+                    />
                 </Form.Item>
 
 
@@ -111,7 +125,7 @@ const UpdateCategory = () => {
                     </Upload>
                 </Form.Item>
                 {image ? (
-                    <Form.Item label="Update Category">
+                    <Form.Item>
                         <Button onClick={handleUpdate}>Update Category</Button>
                     </Form.Item>
                 ) : (
