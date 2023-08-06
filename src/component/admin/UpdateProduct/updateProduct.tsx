@@ -29,6 +29,14 @@ const UpdateProduct = () => {
   const [color, setcolor] = useState("");
   const [cat_id, setCatId] = useState(0);
   const [image, setimage] = useState("");
+
+
+  const [nameError, setNameError] = useState<string>("");
+  const [priceError, setPriceError] = useState<string>("");
+  const [quantityError, setQuantityError] = useState<string>("");
+  const [colorError, setColorError] = useState<string>("");
+  const [catError, setCatError] = useState<string>("");
+
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -85,6 +93,34 @@ const UpdateProduct = () => {
     alert("done");
   }
   const handleUpdate = () => {
+    if (!name) {
+      setNameError("Tên sản phảm không được để trống");
+      return;
+    }
+    if (!price) {
+      setPriceError("Giá sản phảm không được để trống");
+      return;
+    }
+    if (price < 0) {
+      setPriceError("Giá sản phảm không được dưới 0");
+      return;
+    }
+    if (!quantity) {
+      setPriceError("Số lượng sản phảm không được để trống");
+      return;
+    }
+    if (quantity <= 0) {
+      setPriceError("Số lượng sản phảm không được bằng hoặc nhỏ hơn 0");
+      return;
+    }
+    if (!color) {
+      setColorError("Màu sản phảm không được để trống");
+      return;
+    }
+    if (!cat_id) {
+      setCatError("Category không được để trống");
+      return;
+    }
     dispatch(
       UpdateProductAction({
         id: id,
@@ -100,8 +136,12 @@ const UpdateProduct = () => {
     navigate("/admin/product");
   };
   const handleCategoryChange = (value: any) => {
-    setCatId(value);
-    console.log(value);
+    if (value) {
+      setCatId(value);
+      setCatError("");
+    } else {
+      setCatError("Category không để trống");
+    }
   };
   return (
     <>
@@ -128,22 +168,46 @@ const UpdateProduct = () => {
           )
         }
       >
-        <Form.Item label="Name " name="name">
-          <Input onChange={(e: any) => setname(e.target.value)} />
+        <Form.Item label="Name " name="name" validateStatus={nameError ? "error" : ""}
+          help={nameError}>
+          <Input
+            onChange={(e: any) => {
+              setname(e.target.value);
+              setNameError("");
+            }}
+          />
         </Form.Item>
-        <Form.Item label="Price " name="price">
-          <Input onChange={(e: any) => setprice(e.target.value)} />
+        <Form.Item label="Price " name="price" validateStatus={priceError ? "error" : ""}
+          help={priceError}>
+          <Input
+            type="number"
+            onChange={(e: any) => {
+              setprice(e.target.value);
+              setPriceError("");
+            }
+            } />
         </Form.Item>
-        <Form.Item label="Quantity " name="quantity">
-          <Input onChange={(e: any) => setquantity(e.target.value)} />
+        <Form.Item label="Quantity " name="quantity" validateStatus={quantityError ? "error" : ""}
+          help={quantityError}>
+          <Input
+            type="number"
+            onChange={(e: any) => {
+              setquantity(e.target.value);
+              setQuantityError("");
+            }} />
         </Form.Item>
         <Form.Item label="Description " name="description">
           <Input onChange={(e: any) => setdescription(e.target.value)} />
         </Form.Item>
-        <Form.Item label="Color " name="color">
-          <Input onChange={(e: any) => setcolor(e.target.value)} />
+        <Form.Item label="Color " name="color" validateStatus={colorError ? "error" : ""}
+          help={colorError}>
+          <Input onChange={(e: any) => {
+            setcolor(e.target.value);
+            setColorError("")
+          }} />
         </Form.Item>
-        <Form.Item label="Category" name="cat_id">
+        <Form.Item label="Category" name="cat_id" validateStatus={catError ? "error" : ""}
+          help={catError}>
           <Select onChange={handleCategoryChange}>
             {categories?.data?.map((item: any) => {
               return (
