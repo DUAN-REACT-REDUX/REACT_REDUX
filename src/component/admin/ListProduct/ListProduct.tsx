@@ -12,6 +12,7 @@ import "./loadingfetch.css";
 import "./custom-table.css";
 import { fetchCat } from "../../../actions/category";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 interface DataType {
   key: string;
   name: string;
@@ -178,6 +179,7 @@ const ListProduct: React.FC = () => {
         current={currentPage}
         onChange={(page) => onTotal(page)}
       />
+      <ToastContainer />
     </>
   );
 };
