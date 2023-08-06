@@ -115,6 +115,7 @@ const ListProduct: React.FC = () => {
     },
     {
       title: "Description",
+      width: "30%",
       key: "description",
       render(e: any) {
         return e.description;

@@ -40,7 +40,7 @@ const AddCat: React.FC = () => {
   console.log(image, name);
 
   const handleAdd = () => {
-    if (!name || /^\s+$/.test(name)) {
+    if (!name ) {
       setNameError("Bạn chưa nhập tên danh mục");
       return;
     }

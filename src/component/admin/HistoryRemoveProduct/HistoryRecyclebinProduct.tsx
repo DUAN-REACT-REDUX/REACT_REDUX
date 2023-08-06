@@ -166,12 +166,12 @@ const HistoryRemove: React.FC = () => {
     {
       title: "User name",
       key: "user_name",
-      render: (user_info: ProductType) => user_info.user_info.name,
+      render: (user_info: ProductType) => <h5>{user_info.user_info.name}</h5>,
     },
     {
       title: "Time",
       key: "time",
-      render: (product: ProductType) => <h5>{product.time}</h5>,
+      render: (product: ProductType) => {product.time},
     },
     {
       title: "Action",

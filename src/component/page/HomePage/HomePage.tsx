@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCat } from "../../../actions/category";
 import { Fetch6ProductNew, fetchProduct } from "../../../actions/product";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const dispatch = useDispatch<any>();
@@ -89,7 +90,7 @@ const HomePage = () => {
                                 return (
                                     <div className="col-lg-4 col-md-6 pb-1" key={item.cat_id}>
                                         <div className="cat-item d-flex flex-column border mb-4" style={{ padding: "30px" }}>
-                                            <p className="text-right">12</p>
+                                            <p className="text-right"></p>
                                             <a href={`/category/${item.cat_id}/product`} className="cat-img position-relative overflow-hidden mb-3">
                                                 <img className="img-fluid" src={item.image} alt="" />
                                             </a>
@@ -146,7 +147,7 @@ const HomePage = () => {
                                         </div>
                                     </div>
                                     <div className="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-eye text-primary mr-1"></i><Link to={`/shop/${product.product_id}`}>View Detail</Link></a>
                                         <a href="" className="btn btn-sm text-dark p-0"><i className="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                     </div>
                                 </div>
