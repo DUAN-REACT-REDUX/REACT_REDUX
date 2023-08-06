@@ -93,7 +93,7 @@ export const DeleteProduct = createAsyncThunk(
             Authorization: `Bearer ${data.token}`,
           },
         });
-        toast.success("Xóa thành công!");
+        toast.success("Thêm vào thùng rác thành công!");
         return data.idproduct;
       } catch (error) {
         toast.error("Xảy ra lỗi khi xóa.");
