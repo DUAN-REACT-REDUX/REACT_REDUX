@@ -8,6 +8,10 @@ import {
     fetchCat,
 } from "../../../actions/category";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 interface DataType {
     key: string;
@@ -57,6 +61,23 @@ const ListCategories: React.FC = () => {
         dispatch(getAllCategory(total));
     };
 
+    const handleDelete = async (id: string) => {
+        const confirmed = window.confirm("Bạn có chắc chắn muốn xóa?");
+        if (confirmed) {
+            try {
+                await dispatch(
+                    DeleteCategory({
+                        idcat: id,
+                        token: accesstoken.accesstoken,
+                    })
+                );
+                toast.success("Xóa thành công!");
+            } catch (error) {
+                toast.error("Xảy ra lỗi khi xóa.");
+            }
+        }
+    };
+
     const columns: ColumnsType<DataType> = [
         {
             title: "Name",
@@ -79,25 +100,18 @@ const ListCategories: React.FC = () => {
         {
             title: "Action",
             key: "action",
-            render: (id: any) => {
+            render: (record: any) => {
                 return (
                     <>
                         <Button
                             danger
-                            onClick={() =>
-                                dispatch(
-                                    DeleteCategory({
-                                        idcat: id.cat_id,
-                                        token: accesstoken.accesstoken,
-                                    })
-                                )
-                            }
+                            onClick={() => handleDelete(record.cat_id)}
                         >
                             DELETE
                         </Button>
                         <span> </span>
                         <Button>
-                            <Link to={`${id.cat_id}/update`}>Update</Link>
+                            <Link to={`${record.cat_id}/update`}>Update</Link>
                         </Button>
                     </>
                 );
@@ -121,6 +135,8 @@ const ListCategories: React.FC = () => {
                 current={currentPage}
                 onChange={(page) => onTotal(page)}
             />
+            <ToastContainer />
+
         </>
     );
 };
