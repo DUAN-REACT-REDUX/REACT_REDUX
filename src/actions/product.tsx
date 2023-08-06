@@ -1,7 +1,9 @@
+import { toast } from "react-toastify";
 import { instance } from "../api/instance";
 import { pause } from "../utils/pause";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 export const fetchProduct = createAsyncThunk("products/fetch", async () => {
   await pause(2000);
   const { data } = await instance.get(
@@ -81,16 +83,21 @@ export const DeleteProduct = createAsyncThunk(
   "products/delete",
   async (data: any) => {
     console.log(data);
-
-    try {
-      await instance.delete(`/products/${data.idproduct}`, {
-        headers: {
-          Authorization: `Bearer ${data.token}`,
-        },
-      });
-      return data.idproduct;
-    } catch (error) {
-      console.log(error);
+    const confirm = window.confirm(
+      "Bạn có chắc muốn xóa và thêm vào thùng rác không?"
+    );
+    if (confirm) {
+      try {
+        await instance.delete(`/products/${data.idproduct}`, {
+          headers: {
+            Authorization: `Bearer ${data.token}`,
+          },
+        });
+        toast.success("Xóa thành công!");
+        return data.idproduct;
+      } catch (error) {
+        toast.error("Xảy ra lỗi khi xóa.");
+      }
     }
     // await instance.delete(`/products/${productId}`);
     // return productId;
