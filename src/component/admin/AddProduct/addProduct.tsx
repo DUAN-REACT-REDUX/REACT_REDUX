@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { AddProductAction } from "../../../actions/product";
 import { Select } from "antd";
 import { fetchCat } from "../../../actions/category";
+import { ToastContainer, toast } from "react-toastify";
+import { pause } from "../../../utils/pause";
 const { Option } = Select;
 
 const normFile = (e: any) => {
@@ -23,6 +25,13 @@ const AddProduct: React.FC = () => {
   const [color, setcolor] = useState("");
   const [cat_id, setCatId] = useState(0);
   const [image, setimage] = useState("");
+
+  const [nameError, setNameError] = useState<string>("");
+  const [priceError, setPriceError] = useState<string>("");
+  const [colorError, setColorError] = useState<string>("");
+  const [descError, setDescError] = useState<string>("");
+  const [catError, setCatError] = useState<string>("");
+  const [quantityError, setQuantityError] = useState<string>("");
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
   useEffect(() => {
@@ -49,11 +58,32 @@ const AddProduct: React.FC = () => {
   };
   //
   console.log(image, name, price, quantity, description, color, cat_id);
-  if (image) {
-    alert("done");
-  }
-  const handleAdd = () => {
-    dispatch(
+  const handleAdd =async () => {
+    if (!name) {
+      setNameError("Không được để trống!");
+      return;
+    }
+    if (!price) {
+      setPriceError("Không được để trống!");
+      return;
+    }
+    if (!quantity) {
+      setQuantityError("Không được để trống!");
+      return;
+    }
+    if (!description) {
+      setDescError("Không được để trống!");
+      return;
+    }
+    if (!color) {
+      setColorError("Không được để trống!");
+      return;
+    }
+    if (!cat_id) {
+      setCatError("Không được để trống!");
+      return;
+    }
+      dispatch(
       AddProductAction({
         name: name,
         price: price,
@@ -64,15 +94,21 @@ const AddProduct: React.FC = () => {
         image: image,
       })
     );
+  
+    toast.success('Them thanh cong!', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+    await pause(1000)
     navigate("/admin/product");
   };
   const handleCategoryChange = (value: any) => {
     setCatId(value);
-    console.log(value);
+    setNameError("");
   };
 
   return (
     <>
+      <ToastContainer />
       <h1 style={{ marginTop: "50px", marginBottom: "50px" }}>Add Product</h1>
       <Form
         labelCol={{ span: 4 }}
@@ -93,22 +129,45 @@ const AddProduct: React.FC = () => {
           )
         }
       >
-        <Form.Item label="Name ">
-          <Input onChange={(e: any) => setname(e.target.value)} />
+        <Form.Item label="Name "
+          validateStatus={nameError ? "error" : ""}
+          help={nameError}
+          name="name">
+          <Input onChange={(e: any) => {
+            setname(e.target.value);
+            setNameError("");
+          }} />
         </Form.Item>
-        <Form.Item label="Price ">
-          <Input onChange={(e: any) => setprice(e.target.value)} />
+        <Form.Item label="Price " validateStatus={priceError ? "error" : ""}
+          help={priceError} name="price">
+          <Input onChange={(e: any) => {
+            setprice(e.target.value);
+            setPriceError("");
+          }} />
         </Form.Item>
-        <Form.Item label="Quantity ">
-          <Input onChange={(e: any) => setquantity(e.target.value)} />
+        <Form.Item label="Quantity " validateStatus={quantityError ? "error" : ""}
+          help={quantityError} name="quantity">
+          <Input onChange={(e: any) => {
+            setquantity(e.target.value);
+            setQuantityError("");
+          }} />
         </Form.Item>
-        <Form.Item label="Description ">
-          <Input onChange={(e: any) => setdescription(e.target.value)} />
+        <Form.Item label="Description " validateStatus={descError ? "error" : ""}
+          help={descError} name="description">
+          <Input onChange={(e: any) => {
+            setdescription(e.target.value);
+            setDescError("");
+          }} />
         </Form.Item>
-        <Form.Item label="Color ">
-          <Input onChange={(e: any) => setcolor(e.target.value)} />
+        <Form.Item label="Color " validateStatus={colorError ? "error" : ""}
+          help={colorError} name="color">
+          <Input onChange={(e: any) => {
+            setcolor(e.target.value);
+            setColorError("");
+          }} />
         </Form.Item>
-        <Form.Item label="Category">
+        <Form.Item label="Category" validateStatus={catError ? "error" : ""}
+          help={catError}>
           <Select onChange={handleCategoryChange}>
             {categories?.data?.map((item: any) => {
               return (
