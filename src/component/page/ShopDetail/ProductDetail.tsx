@@ -4,7 +4,7 @@ import { GetOneProduct, fetchProduct } from "../../../actions/product";
 import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   const { id } = useParams();
   console.log(id);
   const { products } = useSelector((state: any) => state.products);
