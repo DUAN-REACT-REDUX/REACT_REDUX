@@ -19,6 +19,7 @@ const UpdateCategory = () => {
     const [form] = Form.useForm();
     const [name, setname] = useState([]);
     const [image, setimage] = useState("");
+    const [nameError, setNameError] = useState<string>("");
     const dispatch = useDispatch<any>();
     const navigate = useNavigate();
     const { id } = useParams();
@@ -61,6 +62,10 @@ const UpdateCategory = () => {
         alert("done");
     }
     const handleUpdate = () => {
+        if (!name) {
+            setNameError("Bạn chưa nhập tên danh mục");
+            return;
+        }
         dispatch(
             UpdateCategoriesAction({
                 id: id,
@@ -91,7 +96,10 @@ const UpdateCategory = () => {
                 }
             >
                 <Form.Item label="Name " name="name">
-                    <Input onChange={(e: any) => setname(e.target.value)} />
+                    <Input onChange={(e: any) => {
+                        setname(e.target.value);
+                        setNameError("");
+                    }} />
                 </Form.Item>
 
 
