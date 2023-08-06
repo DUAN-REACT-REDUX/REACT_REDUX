@@ -40,7 +40,7 @@ const AddCat: React.FC = () => {
   console.log(image, name);
 
   const handleAdd = () => {
-    if (!name ) {
+    if (!name) {
       setNameError("Bạn chưa nhập tên danh mục");
       return;
     }
@@ -90,7 +90,7 @@ const AddCat: React.FC = () => {
           </Upload>
         </Form.Item>
         {image ? (
-          <Form.Item label="Add Category">
+          <Form.Item>
             <Button onClick={handleAdd}>Add Category</Button>
           </Form.Item>
         ) : (
